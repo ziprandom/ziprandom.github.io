@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>random comments</title>
+    <link>http://ziprandom.github.io/</link>
+    <description></description>
+    <pubDate>Thu, 28 Apr 2016 11:58:52 UTC</pubDate>
+    <lastBuildDate>Thu, 28 Apr 2016 11:58:52 UTC</lastBuildDate>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Org-Mode Powered AngularJS Boilerplate</title>
+      <link>http://ziprandom.github.io/blog/2013/10/07/org-mode-powered-angularjs-boilerplate</link>
+      <description><![CDATA[<TODO: insert your description here>]]></description>
+      <pubDate>2016-04-28</pubDate>
+      <guid>http://ziprandom.github.io/blog/2013/10/07/org-mode-powered-angularjs-boilerplate</guid>
+    </item>
+    <item>
+      <title>Snippet on Accessing Crystals LLVM Api Bindings</title>
+      <link>http://ziprandom.github.io/blog/2016/04/28/snippet-on-accessing-crystals-llvm-api-bindings-</link>
+      <description><![CDATA[<TODO: insert your description here>]]></description>
+      <pubDate>2016-04-28</pubDate>
+      <guid>http://ziprandom.github.io/blog/2016/04/28/snippet-on-accessing-crystals-llvm-api-bindings-</guid>
+    </item>
+    <item>
+      <title>Untitled</title>
+      <link>http://ziprandom.github.io/blog/2016/04/28/untitled/</link>
+      <description><![CDATA[<div>
+<div class="post">
+<h1 class="title">Untitled</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. About</a></li>
+<li><a href="#orgheadline2">2. Introduction</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> About</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The theme is created for a static sate generator: org-page &#x2014; which is served for <a href="http://emacs-china.github.io">emacs-china</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> Introduction</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Referring to <a href="http://kuangdash.github.io/tags/org-page/">How to use org-page</a> (written in chinese).
+</p>
+</div>
+</div>
+
+</div>
+</div>]]></description>
+      <pubDate>2016-04-28</pubDate>
+      <guid>http://ziprandom.github.io/blog/2016/04/28/untitled/</guid>
+    </item>
+  </channel>
+</rss>
