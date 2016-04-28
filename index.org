@@ -1,0 +1,11 @@
+#+TITLE:       comments on programming
+#+AUTHOR:      Zip Random
+#+EMAIL:       ziprandom@gmail.com
+#+DATE:        2016-04-28
+#+URI:         /
+#+KEYWORDS:
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+DESCRIPTION: commenton programming by zip random
+
+A place to publish insights, snippets and research.
