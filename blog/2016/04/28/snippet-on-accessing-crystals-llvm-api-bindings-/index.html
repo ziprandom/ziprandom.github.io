@@ -58,8 +58,8 @@ Using crystals llvm bindings to create a LLVM IR for the simple addition example
 <pre class="src src-crystal">require "llvm"
 
 LLVM.init_x86
-LLVM::Module.new("main").tap do | main_module |         # ; ModuleID = 'main'
-  main_module.functions.add(                           # define i32 @main() {
+LLVM::Module.new("main").tap do | main_module |          # ; ModuleID = 'main'
+  main_module.functions.add(                             # define i32 @main() {
     "main",
     Array.new(0, LLVM::Int32),
     LLVM::Int32
