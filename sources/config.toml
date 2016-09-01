@@ -1,0 +1,4 @@
+baseurl = "http://ziprandom.gitub.io"
+languageCode = "en-us"
+title = "random comments"
+theme = "web_log"

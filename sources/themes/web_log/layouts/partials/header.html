@@ -1,0 +1,7 @@
+<section class="header">
+  <h2><a href={{"/" | absURL}}>{{ .Site.Title}}</a></h2>
+</section>
+{{ range first 1 (where (where .Data.Pages "Section" "page") "Title" "intro") }}
+{{ .Content }}
+{{ end }}
+<hr/>

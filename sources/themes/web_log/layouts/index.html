@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html lang="en">
+
+  {{ partial "head.html" . }}
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="column column-offset-10 column-80">
+          {{ partial "header.html" . }}
+
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            {{ range (where .Data.Pages "Section" "blog") }}
+            <tbody>
+              <tr>
+                <td>{{ .Date.Format "Mon, Jan 2, 2006" }}</td>
+                <td>
+                  <a href="{{ .Permalink }}">{{ .Title }}</a> -
+                  {{ .Summary}}
+                </td>
+              </tr>
+            </tbody>
+            {{ end }}
+
+          </table>
+        </div>
+      </div>
+    </div>
+    {{ partial "footer.html" . }}
+  </body>
+</html>

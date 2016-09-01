@@ -1,0 +1,7 @@
+name = "web_log"
+license = "MIT"
+description = ""
+
+[author]
+  name = "ziprandom"
+  homepage = "ziprandom.github.io"
