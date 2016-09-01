@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>random comments</title>
-    <link>http://ziprandom.gitub.io/</link>
+    <link>http://ziprandom.github.io/</link>
     <description>Recent content on random comments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 01 Sep 2016 11:39:46 -0300</lastBuildDate>
-    <atom:link href="http://ziprandom.gitub.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ziprandom.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>intro</title>
-      <link>http://ziprandom.gitub.io/page/intro/</link>
+      <link>http://ziprandom.github.io/page/intro/</link>
       <pubDate>Thu, 01 Sep 2016 11:39:46 -0300</pubDate>
       
-      <guid>http://ziprandom.gitub.io/page/intro/</guid>
+      <guid>http://ziprandom.github.io/page/intro/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://www.github.com/ziprandom&#34;&gt;github/ziprandom&lt;/a&gt; -
 A place to publish insights, snippets and research.&lt;/p&gt;
 </description>
@@ -22,10 +22,10 @@ A place to publish insights, snippets and research.&lt;/p&gt;
     
     <item>
       <title>Crystal LLVM IR API</title>
-      <link>http://ziprandom.gitub.io/blog/crystal-lang-llvm-api/</link>
+      <link>http://ziprandom.github.io/blog/crystal-lang-llvm-api/</link>
       <pubDate>Thu, 28 Apr 2016 16:00:00 -0300</pubDate>
       
-      <guid>http://ziprandom.gitub.io/blog/crystal-lang-llvm-api/</guid>
+      <guid>http://ziprandom.github.io/blog/crystal-lang-llvm-api/</guid>
       <description>&lt;p&gt;Using crystals llvm bindings to create an LLVM IR for the simple addition example.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;  require &amp;quot;llvm&amp;quot;
@@ -72,10 +72,10 @@ A place to publish insights, snippets and research.&lt;/p&gt;
     
     <item>
       <title>Org-Mode Powered AngularJS Boilerplate</title>
-      <link>http://ziprandom.gitub.io/blog/angular-org-mode/</link>
+      <link>http://ziprandom.github.io/blog/angular-org-mode/</link>
       <pubDate>Mon, 04 Nov 2013 16:00:00 -0300</pubDate>
       
-      <guid>http://ziprandom.gitub.io/blog/angular-org-mode/</guid>
+      <guid>http://ziprandom.github.io/blog/angular-org-mode/</guid>
       <description>
 
 &lt;p&gt;This is my custom angular.js boilerplate Setup based on Emacs&amp;rsquo;s Org Mode
@@ -108,7 +108,7 @@ a www directory inside the org-files location with these files:&lt;/p&gt;
 &lt;li&gt;css/style.css&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;and tries to open the index.html in your browser. Now you can try out &lt;a href=&#34;http://ziprandom.gitub.io/stuff/www/index.html&#34;&gt;a
+&lt;p&gt;and tries to open the index.html in your browser. Now you can try out &lt;a href=&#34;http://ziprandom.github.io/stuff/www/index.html&#34;&gt;a
 very basic angular.js example&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;3-editing-the-code&#34;&gt;3 Editing the code&lt;/h3&gt;
