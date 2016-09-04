@@ -24,7 +24,7 @@ pre > code {
 }
 
 pre {
-    background: gold;
+    background: snowwhite;
     background-transparency: 0.1;
     border-left: .3rem solid black;
     font-family: "Menlo","Consolas","Bitstream Vera Sans Mono","DejaVu Sans Mono","Monaco",monospace;
@@ -43,7 +43,7 @@ a:hover {
 body {
     font-family: 'Roboto', sans-serif;
     color: #323538;
-    background-color: gold;
+    background-color: snowwhite;
     opacity: 0.9;
     padding-top: 50px;
 }
