@@ -19,10 +19,31 @@
 
 @import './fonts.css';
 
+pre > code {
+    background-color: black;
+}
+
+pre {
+    background: gold;
+    background-transparency: 0.1;
+    border-left: .3rem solid black;
+    font-family: "Menlo","Consolas","Bitstream Vera Sans Mono","DejaVu Sans Mono","Monaco",monospace;
+}
+
+a {
+    color: #d81252;
+    font-weight: bold;
+
+}
+
+a:hover {
+    color: #d81252;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     color: #323538;
-    background-color: snow;
+    background-color: gold;
     opacity: 0.9;
     padding-top: 50px;
 }
