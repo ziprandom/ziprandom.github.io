@@ -2,3 +2,6 @@ baseurl = "https://ziprandom.github.io"
 languageCode = "en-us"
 title = "random comments"
 theme = "web_log"
+
+[params]
+  icon = "img/ape1.png"

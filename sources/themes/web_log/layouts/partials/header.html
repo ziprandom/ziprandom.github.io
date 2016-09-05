@@ -1,7 +1,22 @@
-<section class="header">
-  <h2><a href={{"/" | absURL}}>{{ .Site.Title}}</a></h2>
-</section>
-{{ range first 1 (where (where .Data.Pages "Section" "page") "Title" "intro") }}
-{{ .Content }}
-{{ end }}
+<div class="row">
+  <div class="column column-offset-10 column-70">
+    <section class="header">
+      <h2>
+        <a href={{"/" | absURL}}>{{ .Site.Title}}</a>
+      </h2>
+    </section>
+    {{ range first 1 (where (where .Site.Pages "Section" "page") "Title" "intro") }}
+      {{ .Content }}
+    {{ end }}
+  </div>
+
+  <div class="column column-20">
+    {{ with .Site.Params.icon }}
+    <section class="profile_pic">
+      <img src="{{ . | relURL }}" />
+    </section>
+    {{end}}
+  </div>
+
+</div>
 <hr/>
