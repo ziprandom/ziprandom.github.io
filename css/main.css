@@ -19,13 +19,30 @@
 
 @import './fonts.css';
 
-pre > code {
+html {
+    overflow-y: scroll;
+}
+
+pre {
     background-color: black;
+}
+
+@media (max-width: 40.0rem) {
+    pre {
+        background-color: black;
+        font-size: 50%;
+    }
+
+    .profile_pic {
+        display: none;
+    }
+    .profile_pic_mobile {
+        display: block;
+    }
 }
 
 pre {
     background: snowwhite;
-    background-transparency: 0.1;
     border-left: .3rem solid black;
     font-family: "Menlo","Consolas","Bitstream Vera Sans Mono","DejaVu Sans Mono","Monaco",monospace;
 }
