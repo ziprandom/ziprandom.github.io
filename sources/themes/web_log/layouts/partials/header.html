@@ -5,9 +5,11 @@
         <a href={{"/" | absURL}}>{{ .Site.Title}}</a>
       </h2>
     </section>
+    <div class="page-subtitle" >
     {{ range first 1 (where (where .Site.Pages "Section" "page") "Title" "intro") }}
       {{ .Content }}
     {{ end }}
+    </div>
   </div>
 
   <div class="column column-20">
@@ -17,6 +19,5 @@
     </section>
     {{end}}
   </div>
-
 </div>
 <hr/>

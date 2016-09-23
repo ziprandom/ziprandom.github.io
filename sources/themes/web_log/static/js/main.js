@@ -10,29 +10,11 @@ window.jQuery(document).ready(function() {
     var self = $(this);
     var classes = self.attr('class').split(/\s+/);
     $.each(classes, function(idx, cls) {
-      if (cls.substring(0, 4) === 'src-') {
-        var lang = cls.substring(4);
-        self.removeClass(cls).addClass('lang-' + lang);
+      if (cls.substring(0, 9) === 'language-') {
+        var lang = cls.substring(9);
+        self.removeClass(cls).addClass(lang);
       }
     });
-    self.addClass('prettyprint');
   });
-  $('pre.example').removeClass('example').addClass('prettyprint');
-
-  /*******************************************************************
-   * 1. remove all org exported line number spans
-   * 2. add css class "linenums" to code block per the description of
-   *    prettify.js
-   ******************************************************************/
-  var $lines = $('span.linenr');
-  var $linedBlocks = $lines.parent();
-  $lines.remove();
-  $linedBlocks.each(function(index) {
-    $(this).addClass('linenums');
-  });
-
-  /*******************************************************************
-   * pretty print all code blocks
-   ******************************************************************/
-  prettyPrint();
+  hljs.initHighlightingOnLoad()
 });

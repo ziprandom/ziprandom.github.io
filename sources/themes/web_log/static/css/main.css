@@ -22,16 +22,17 @@
 html {
     overflow-y: scroll;
 }
+p {
+    text-align: justify;
+    text-justify: inter-word;
+}
 
-pre {
-    background-color: black;
+.page-subtitle {
+    text-align: inherit;
+    text-justify: inherit;
 }
 
 @media (max-width: 40.0rem) {
-    pre {
-        background-color: black;
-        font-size: 50%;
-    }
 
     .profile_pic {
         display: none;
@@ -42,15 +43,14 @@ pre {
 }
 
 pre {
-    background: snowwhite;
-    border-left: .3rem solid black;
+    //background: snowwhite;
+    border-left: .3rem solid #d81252;
     font-family: "Menlo","Consolas","Bitstream Vera Sans Mono","DejaVu Sans Mono","Monaco",monospace;
 }
 
 a {
     color: #d81252;
     font-weight: bold;
-
 }
 
 a:hover {
