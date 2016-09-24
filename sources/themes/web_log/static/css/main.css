@@ -42,6 +42,10 @@ p {
     }
 }
 
+.profile_pic img {
+    border-radius: 3px;
+}
+
 pre {
     //background: snowwhite;
     border-left: .3rem solid #d81252;
