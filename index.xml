@@ -19,11 +19,11 @@
 
 &lt;p&gt;Just a snapshot of what I use for effective &amp;amp; fun JS Webdevelopment right now.&lt;/p&gt;
 
-&lt;p&gt;Js Webapp development has become really fun for me since I discovered &lt;a href=&#34;https://facebook.github.io/react/&#34;&gt;React&lt;/a&gt;. What I do ever since is build UI centric Applications around a preferably immutable state. I tried &lt;a href=&#34;http://redux.js.org/&#34;&gt;Redux&lt;/a&gt; but found it to be overhead for the small applications I developed. So I mostly stick with &lt;a href=&#34;https://github.com/Yomguithereal/baobab&#34;&gt;Baobab&lt;/a&gt; that I serve as a &lt;a href=&#34;https://github.com/Reactive-Extensions/RxJS&#34;&gt;RxJS&lt;/a&gt; &lt;a href=&#34;https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md&#34;&gt;Observable Sequence&lt;/a&gt;, a Stream that floats through the Application from (abstraction) top to bottom.&lt;/p&gt;
+&lt;p&gt;JS webapp development has become really fun for me since I finally learned &lt;a href=&#34;https://facebook.github.io/react/&#34;&gt;React&lt;/a&gt;. What I do ever since is build UI centric Applications around a preferably immutable state. I tried &lt;a href=&#34;http://redux.js.org/&#34;&gt;Redux&lt;/a&gt; but found it to be overhead for the small applications I developed. So I mostly stick with the &lt;a href=&#34;https://github.com/Yomguithereal/baobab&#34;&gt;Baobab&lt;/a&gt; immutable data tree that I serve as a &lt;a href=&#34;https://github.com/Reactive-Extensions/RxJS&#34;&gt;RxJS&lt;/a&gt; &lt;a href=&#34;https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md&#34;&gt;Observable Sequence&lt;/a&gt;, a stream that flows through the application from (abstraction) top to bottom.&lt;/p&gt;
 
-&lt;h3 id=&#34;ui-templating-react-stateless-functional-components&#34;&gt;UI / Templating: React (Stateless) Functional Components&lt;/h3&gt;
+&lt;h3 id=&#34;ui-templating-react-stateless-functional-components&#34;&gt;UI &amp;amp; Templating: React Stateless Functional Components&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;Template Component&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Templates as Pure Function Components&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const PostsTemplate = ({posts, page, setPage}) =&amp;gt; (
   &amp;lt;div&amp;gt;
@@ -49,7 +49,7 @@
 );
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Higher Order Component to Decorate Template with State Stream derived Data&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Higher Order Component to Decorate Template with State Stream Derived Data&lt;/strong&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const OnPostsFromStateRefresh = recompose.compose(
   recompose.mapPropsStream(
@@ -80,11 +80,11 @@
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;module.exports = OnPostsFromStateRefresh(PostsTemplate);
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;I create hierarchical React components to layout the UI. React can express all of the UI&amp;rsquo;s logic and depends on the state for the data to display. The state or relevant-sections of it as &lt;a href=&#34;https://github.com/Yomguithereal/baobab#cursors&#34;&gt;cursors&lt;/a&gt; get passed down the component hierarchy from the abstract &lt;code&gt;&amp;lt;App&amp;gt;...&amp;lt;/App&lt;/code&gt; component down to the &lt;code&gt;&amp;lt;button onClick={..}&amp;gt;...&amp;lt;/button&amp;gt;&lt;/code&gt; that directly renders to the button dom element. I don&amp;rsquo;t use ES6 Classes to express components, but define components as Pure Functions that take properties (including state) and return Virtual Dom Nodes. By Nesting Pure Functional Components in HoC a separation of logic is achieved in a functional way, not unlike Rails` middleware onion. I make excessive use of the Higher Order Components provided by the &lt;a href=&#34;https://github.com/acdlite/recompose/blob/master/docs/API.md&#34;&gt;React utility belt Recompose&lt;/a&gt; that also help in coupling Dom to the states Observable Stream.&lt;/p&gt;
+&lt;p&gt;I create hierarchical React components to layout the ui. React can express all of the ui&amp;rsquo;s logic and depends on the state for the data to display. The state or relevant-sections of it gets passed down the component hierarchy from the abstractest &lt;code&gt;&amp;lt;App&amp;gt;...&amp;lt;/App&lt;/code&gt; component down to the last &lt;code&gt;&amp;lt;button onClick={..}&amp;gt;...&amp;lt;/button&amp;gt;&lt;/code&gt; that directly renders to the button dom element. I don&amp;rsquo;t use ES6 Classes to express components, but instead define the as &lt;a href=&#34;https://facebook.github.io/react/docs/reusable-components.html#stateless-functions&#34;&gt;stateless &amp;amp; pure functions&lt;/a&gt; that take properties (including state) and return virtual dom nodes. By nesting Pure Functional Components in Higher Order Components (Components, that wrap Components to add or alter logic) a separation of logic is achieved in a functional way, not unlike Rails` middleware onion. I make excessive use of the Higher Order Components provided by the &lt;a href=&#34;https://github.com/acdlite/recompose/blob/master/docs/API.md&#34;&gt;React utility belt Recompose&lt;/a&gt; that also help in coupling the dom to the states Observable Stream.&lt;/p&gt;
 
 &lt;h3 id=&#34;processing-building-bundling&#34;&gt;Processing / Building / Bundling&lt;/h3&gt;
 
-&lt;p&gt;The by far handiest js build system and dev server I&amp;rsquo;ve encoutered is &lt;a href=&#34;https://webpack.github.io/&#34;&gt;Webpack&lt;/a&gt;. I use it with the &lt;a href=&#34;https://babeljs.io/docs/setup/#installation&#34;&gt;Babel&lt;/a&gt; transpiler to polyfill ES6 Syntax (&lt;code&gt;({a, b}) =&amp;gt; ({a,...b})&lt;/code&gt;) with Reacts JSX &lt;code&gt;&amp;lt;MyFunkyComponent/&amp;gt;&lt;/code&gt; as well as preprocess and deliver (s)css, fonts and assets bundled inside that same minified js file. Basically everything is available through the &lt;code&gt;import&lt;/code&gt; (&lt;code&gt;@import&lt;/code&gt; for styles) or &lt;code&gt;require&lt;/code&gt; syntax. I love it so much! &lt;a href=&#34;https://www.npmjs.com/&#34;&gt;Node Package Manager&lt;/a&gt; is used to install everything I need. And &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; Hosts the whole js dev environment.&lt;/p&gt;
+&lt;p&gt;The by far handiest js build system and dev server I&amp;rsquo;ve encoutered is &lt;a href=&#34;https://webpack.github.io/&#34;&gt;Webpack&lt;/a&gt;. I use it with the &lt;a href=&#34;https://babeljs.io/docs/setup/#installation&#34;&gt;Babel&lt;/a&gt; transpiler to polyfill ES6 syntax (&lt;code&gt;({a, b}) =&amp;gt; ({a,...b})&lt;/code&gt;) with Reacts JSX &lt;code&gt;&amp;lt;MyFunkyComponent/&amp;gt;&lt;/code&gt; as well as preprocess and deliver css, fonts and assets bundled inside that same minified js file. Basically everything is available through the &lt;code&gt;import&lt;/code&gt; (&lt;code&gt;@import&lt;/code&gt; for styles) or &lt;code&gt;require&lt;/code&gt; syntax. I love it so much! &lt;a href=&#34;https://www.npmjs.com/&#34;&gt;Node Package Manager&lt;/a&gt; is used to install everything I need. And &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; osts the whole js dev environment.&lt;/p&gt;
 
 &lt;h3 id=&#34;immutable-global-state&#34;&gt;Immutable Global State&lt;/h3&gt;
 
@@ -114,13 +114,13 @@ let onStateStream = recompose.mapPropsStream(
 module.exports(onStateStream)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;The state basically is &lt;strong&gt;one big immutable Hash that gets passed to the Component (Render) Functions whenever it updates&lt;/strong&gt;. The keys that didn&amp;rsquo;t change still have the same id. So for an unchanged key &lt;code&gt;a&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The state basically is &lt;strong&gt;one big immutable Hash&lt;/strong&gt; that gets passed to the Component (Render) Functions whenever it updates. The keys that didn&amp;rsquo;t change still have the same object id. So for an unchanged key &lt;code&gt;a&lt;/code&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;oldState.get(&#39;a&#39;)
   === newState.get(&#39;a&#39;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;holds and components that are guarded by the &lt;code&gt;recompose.pure()&lt;/code&gt; Higher Order Component don&amp;rsquo;t do unnecessary updates. If the value of a part of the tree change you are garanteed to get a new Object &lt;code&gt;!==&lt;/code&gt; the old State&lt;/p&gt;
+&lt;p&gt;holds true and components that are guarded by the &lt;code&gt;recompose.pure()&lt;/code&gt; Higher Order Component don&amp;rsquo;t do unnecessary updates. If the value of a part of the tree changes you are garanteed to get a new Object &lt;code&gt;!==&lt;/code&gt; the old State. So no expensive deep checking needs to be done (when you use recompose.pure or reacts shallowCompare).&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;postsCursor =
   state.select(&#39;posts&#39;)
@@ -134,13 +134,15 @@ module.exports(onStateStream)
 )
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;but this is better solved by directly consuming the State Observable Stream.&lt;/p&gt;
+
 &lt;h3 id=&#34;ide-editing&#34;&gt;IDE / Editing&lt;/h3&gt;
 
-&lt;p&gt;Emacs, what else :D &lt;a href=&#34;http://web-mode.org/&#34;&gt;web-mode&lt;/a&gt; does a nice job highlighting and aligning es6 syntax and various template languages like JSX. Also did I find &lt;a href=&#34;https://magit.vc/&#34;&gt;magit&lt;/a&gt; to be the best way to use git.&lt;/p&gt;
+&lt;p&gt;Emacs, what else :D &lt;a href=&#34;http://web-mode.org/&#34;&gt;web-mode&lt;/a&gt; does a nice job highlighting and aligning ES6 syntax and various template languages like JSX. Also did I find &lt;a href=&#34;https://magit.vc/&#34;&gt;magit&lt;/a&gt; to be the best way to use git.&lt;/p&gt;
 
 &lt;h3 id=&#34;libs-services&#34;&gt;Libs/Services&lt;/h3&gt;
 
-&lt;p&gt;The Ajax Library of choice is &lt;a href=&#34;http://visionmedia.github.io/superagent/&#34;&gt;superagent&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The AJAX library of choice is &lt;a href=&#34;http://visionmedia.github.io/superagent/&#34;&gt;superagent&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;testing&#34;&gt;Testing&lt;/h3&gt;
 
