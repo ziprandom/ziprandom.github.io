@@ -12,7 +12,11 @@ Just a snapshot of what I use for effective & fun JS Webdevelopment right now.
 
 JS webapp development has become really fun for me since I finally learned [React](https://facebook.github.io/react/). What I do ever since is build UI centric Applications around a preferably immutable state. I tried [Redux](http://redux.js.org/) but found it to be overhead for the small applications I developed. So I mostly stick with the [Baobab](https://github.com/Yomguithereal/baobab) immutable data tree that I serve as a [RxJS](https://github.com/Reactive-Extensions/RxJS) [Observable Sequence](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md), a stream that flows through the application from (abstraction) top to bottom.
 
-### UI & Templating: React Stateless Functional Components
+### Develompemnt / Processing / Building / Bundling with Webpack & ES6
+
+The by far handiest js build system and dev server I've encoutered is [Webpack](https://webpack.github.io/). I use it with the [Babel](https://babeljs.io/docs/setup/#installation) transpiler to polyfill ES6 syntax (```({a, b}) => ({a,...b})```) with Reacts JSX ```<MyFunkyComponent/>``` as well as preprocess and deliver css, fonts and assets bundled inside that same minified js file. Basically everything is available through the ```import``` (```@import``` for styles) or ```require``` syntax. I love it so much! [Node Package Manager](https://www.npmjs.com/) is used to install everything I need. And [docker](https://www.docker.com/) hosts the whole js dev environment.
+
+### UI & Templating: Stateless Functional Components with React & Recompose
 
 **Templates as Pure Function Components**
 ```javascript
@@ -73,11 +77,7 @@ module.exports = OnPostsFromStateRefresh(PostsTemplate);
 
 I create hierarchical React components to layout the ui. React can express all of the ui's logic and depends on the state for the data to display. The state or relevant-sections of it gets passed down the component hierarchy from the abstractest ```<App>...</App``` component down to the last ```<button onClick={..}>...</button>``` that directly renders to the button dom element. I don't use ES6 Classes to express components, but instead define the as [stateless & pure functions](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) that take properties (including state) and return virtual dom nodes. By nesting Pure Functional Components in Higher Order Components (Components, that wrap Components to add or alter logic) a separation of logic is achieved in a functional way, not unlike Rails` middleware onion. I make excessive use of the Higher Order Components provided by the [React utility belt Recompose](https://github.com/acdlite/recompose/blob/master/docs/API.md) that also help in coupling the dom to the states Observable Stream.
 
-### Processing / Building / Bundling
-
-The by far handiest js build system and dev server I've encoutered is [Webpack](https://webpack.github.io/). I use it with the [Babel](https://babeljs.io/docs/setup/#installation) transpiler to polyfill ES6 syntax (```({a, b}) => ({a,...b})```) with Reacts JSX ```<MyFunkyComponent/>``` as well as preprocess and deliver css, fonts and assets bundled inside that same minified js file. Basically everything is available through the ```import``` (```@import``` for styles) or ```require``` syntax. I love it so much! [Node Package Manager](https://www.npmjs.com/) is used to install everything I need. And [docker](https://www.docker.com/) osts the whole js dev environment.
-
-### Immutable Global State
+### Immutable Global State with BaoBab & RxJS
 ```javascript
 import BaoBab form 'baobab';
 import recompose from 'recompose';
@@ -136,7 +136,7 @@ Emacs, what else :D [web-mode](http://web-mode.org/) does a nice job highlightin
 
 ### Libs/Services
 
-The AJAX library of choice is [superagent](http://visionmedia.github.io/superagent/).
+The AJAX library of choice is [superagent](http://visionmedia.github.io/superagent/). When I have to display bigger chunks of text I store these as Markdown Documents and use [markdown-to-react-components](https://github.com/christianalfoni/markdown-to-react-components) + webpack file inclusion on build time to pull it them into the app.
 
 ### Testing
 
