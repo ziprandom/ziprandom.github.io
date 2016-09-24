@@ -10,11 +10,11 @@ Just a snapshot of what I use for effective & fun JS Webdevelopment right now.
 
 <!--more-->
 
-Js Webapp development has become really fun for me since I discovered [React](https://facebook.github.io/react/). What I do ever since is build UI centric Applications around a preferably immutable state. I tried [Redux](http://redux.js.org/) but found it to be overhead for the small applications I developed. So I mostly stick with [Baobab](https://github.com/Yomguithereal/baobab) that I serve as a [RxJS](https://github.com/Reactive-Extensions/RxJS) [Observable Sequence](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md), a Stream that floats through the Application from (abstraction) top to bottom.
+JS webapp development has become really fun for me since I finally learned [React](https://facebook.github.io/react/). What I do ever since is build UI centric Applications around a preferably immutable state. I tried [Redux](http://redux.js.org/) but found it to be overhead for the small applications I developed. So I mostly stick with the [Baobab](https://github.com/Yomguithereal/baobab) immutable data tree that I serve as a [RxJS](https://github.com/Reactive-Extensions/RxJS) [Observable Sequence](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md), a stream that flows through the application from (abstraction) top to bottom.
 
-### UI / Templating: React (Stateless) Functional Components
+### UI & Templating: React Stateless Functional Components
 
-**Template Component**
+**Templates as Pure Function Components**
 ```javascript
 const PostsTemplate = ({posts, page, setPage}) => (
   <div>
@@ -40,7 +40,7 @@ const PostsTemplate = ({posts, page, setPage}) => (
 );
 ```
 
-**Higher Order Component to Decorate Template with State Stream derived Data**
+**Higher Order Component to Decorate Template with State Stream Derived Data**
 ```javascript
 const OnPostsFromStateRefresh = recompose.compose(
   recompose.mapPropsStream(
@@ -71,11 +71,11 @@ const OnPostsFromStateRefresh = recompose.compose(
 module.exports = OnPostsFromStateRefresh(PostsTemplate);
 ```
 
-I create hierarchical React components to layout the UI. React can express all of the UI's logic and depends on the state for the data to display. The state or relevant-sections of it as [cursors](https://github.com/Yomguithereal/baobab#cursors) get passed down the component hierarchy from the abstract ```<App>...</App``` component down to the ```<button onClick={..}>...</button>``` that directly renders to the button dom element. I don't use ES6 Classes to express components, but define components as Pure Functions that take properties (including state) and return Virtual Dom Nodes. By Nesting Pure Functional Components in HoC a separation of logic is achieved in a functional way, not unlike Rails` middleware onion. I make excessive use of the Higher Order Components provided by the [React utility belt Recompose](https://github.com/acdlite/recompose/blob/master/docs/API.md) that also help in coupling Dom to the states Observable Stream.
+I create hierarchical React components to layout the ui. React can express all of the ui's logic and depends on the state for the data to display. The state or relevant-sections of it gets passed down the component hierarchy from the abstractest ```<App>...</App``` component down to the last ```<button onClick={..}>...</button>``` that directly renders to the button dom element. I don't use ES6 Classes to express components, but instead define the as [stateless & pure functions](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) that take properties (including state) and return virtual dom nodes. By nesting Pure Functional Components in Higher Order Components (Components, that wrap Components to add or alter logic) a separation of logic is achieved in a functional way, not unlike Rails` middleware onion. I make excessive use of the Higher Order Components provided by the [React utility belt Recompose](https://github.com/acdlite/recompose/blob/master/docs/API.md) that also help in coupling the dom to the states Observable Stream.
 
 ### Processing / Building / Bundling
 
-The by far handiest js build system and dev server I've encoutered is [Webpack](https://webpack.github.io/). I use it with the [Babel](https://babeljs.io/docs/setup/#installation) transpiler to polyfill ES6 Syntax (```({a, b}) => ({a,...b})```) with Reacts JSX ```<MyFunkyComponent/>``` as well as preprocess and deliver (s)css, fonts and assets bundled inside that same minified js file. Basically everything is available through the ```import``` (```@import``` for styles) or ```require``` syntax. I love it so much! [Node Package Manager](https://www.npmjs.com/) is used to install everything I need. And [docker](https://www.docker.com/) Hosts the whole js dev environment.
+The by far handiest js build system and dev server I've encoutered is [Webpack](https://webpack.github.io/). I use it with the [Babel](https://babeljs.io/docs/setup/#installation) transpiler to polyfill ES6 syntax (```({a, b}) => ({a,...b})```) with Reacts JSX ```<MyFunkyComponent/>``` as well as preprocess and deliver css, fonts and assets bundled inside that same minified js file. Basically everything is available through the ```import``` (```@import``` for styles) or ```require``` syntax. I love it so much! [Node Package Manager](https://www.npmjs.com/) is used to install everything I need. And [docker](https://www.docker.com/) osts the whole js dev environment.
 
 ### Immutable Global State
 ```javascript
@@ -105,14 +105,14 @@ let onStateStream = recompose.mapPropsStream(
 module.exports(onStateStream)
 ```
 
-The state basically is **one big immutable Hash that gets passed to the Component (Render) Functions whenever it updates**. The keys that didn't change still have the same id. So for an unchanged key ```a```
+The state basically is **one big immutable Hash** that gets passed to the Component (Render) Functions whenever it updates. The keys that didn't change still have the same object id. So for an unchanged key ```a```
 
 ```javascript
 oldState.get('a')
   === newState.get('a')
 ```
 
-holds and components that are guarded by the ```recompose.pure()``` Higher Order Component don't do unnecessary updates. If the value of a part of the tree change you are garanteed to get a new Object ```!==``` the old State
+holds true and components that are guarded by the ```recompose.pure()``` Higher Order Component don't do unnecessary updates. If the value of a part of the tree changes you are garanteed to get a new Object ```!==``` the old State. So no expensive deep checking needs to be done (when you use recompose.pure or reacts shallowCompare).
 
 ```javascript
 postsCursor =
@@ -128,13 +128,15 @@ postsCursor.on(
 )
 ```
 
+but this is better solved by directly consuming the State Observable Stream.
+
 ### IDE / Editing
 
-Emacs, what else :D [web-mode](http://web-mode.org/) does a nice job highlighting and aligning es6 syntax and various template languages like JSX. Also did I find [magit](https://magit.vc/) to be the best way to use git.
+Emacs, what else :D [web-mode](http://web-mode.org/) does a nice job highlighting and aligning ES6 syntax and various template languages like JSX. Also did I find [magit](https://magit.vc/) to be the best way to use git.
 
 ### Libs/Services
 
-The Ajax Library of choice is [superagent](http://visionmedia.github.io/superagent/).
+The AJAX library of choice is [superagent](http://visionmedia.github.io/superagent/).
 
 ### Testing
 
