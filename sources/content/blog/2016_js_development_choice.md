@@ -6,17 +6,19 @@ date = "2016-09-23T16:00:00-03:00"
 draft = false
 +++
 
-Just a snapshot of what I use for effective & fun JS Webdevelopment right now.
+Just a snapshot of what I use for effective & fun JS Webdevelopment right now with some overall description of application design and the libs & tools used.
 
 <!--more-->
 
+**tl;dr** [ [React](https://facebook.github.io/react/) + [Baobab](https://github.com/Yomguithereal/baobab) + [RxJS](https://github.com/Reactive-Extensions/RxJS) + [RxJS - Observable Sequenceses](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md) + [Webpack](https://webpack.github.io/) + [Babel](https://babeljs.io/docs/setup/#installation) + [Stateless & Pure Functional Components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) + [React utility belt of Higher Order Components - Recompose](https://github.com/acdlite/recompose/blob/master/docs/API.md) + [superagent - ajax with less suck](http://visionmedia.github.io/superagent/) + [markdown-to-react-components](https://github.com/christianalfoni/markdown-to-react-components) + [chimp test framework](https://chimp.readme.io/) + [chimp with cucumber scenarios](https://chimp.readme.io/docs/getting-started) + [yasmine unit tests](http://jasmine.github.io/) + [cucumberjs-json-api-mocking](https://github.com/ziprandom/cucumberjs-json-api-mocking) + [emacs web-mode](http://web-mode.org/) ]
+
 JS webapp development has become really fun for me since I finally learned [React](https://facebook.github.io/react/). What I do ever since is build UI centric Applications around a preferably immutable state. I tried [Redux](http://redux.js.org/) but found it to be overhead for the small applications I developed. So I mostly stick with the [Baobab](https://github.com/Yomguithereal/baobab) immutable data tree that I serve as a [RxJS](https://github.com/Reactive-Extensions/RxJS) [Observable Sequence](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md), a stream that flows through the application from (abstraction) top to bottom.
 
-### Develompemnt / Processing / Building / Bundling with Webpack & ES6
+### Development, Processing & Bundling with Webpack
 
-The by far handiest js build system and dev server I've encoutered is [Webpack](https://webpack.github.io/). I use it with the [Babel](https://babeljs.io/docs/setup/#installation) transpiler to polyfill ES6 syntax (```({a, b}) => ({a,...b})```) with Reacts JSX ```<MyFunkyComponent/>``` as well as preprocess and deliver css, fonts and assets bundled inside that same minified js file. Basically everything is available through the ```import``` (```@import``` for styles) or ```require``` syntax. I love it so much! [Node Package Manager](https://www.npmjs.com/) is used to install everything I need. And [docker](https://www.docker.com/) hosts the whole js dev environment.
+The by far handiest js build system and dev server I've encountered is [Webpack](https://webpack.github.io/). I use it with the [Babel](https://babeljs.io/docs/setup/#installation) transpiler to polyfill ES6 syntax (```({a, b}) => ({a,...b})```) with Reacts JSX ```<MyFunkyComponent/>``` as well as preprocess and deliver css, fonts and assets bundled inside that same minified js file. Basically everything is available through the ```import``` (```@import``` for styles) or ```require``` syntax. I love it so much! [Node Package Manager](https://www.npmjs.com/) is used to install everything I need. And [docker](https://www.docker.com/) hosts the whole js dev environment.
 
-### UI & Templating: Stateless Functional Components with React & Recompose
+### UI & Templating with Stateless Functional Components
 
 **Templates as Pure Function Components**
 ```javascript
