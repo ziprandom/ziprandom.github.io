@@ -90,9 +90,10 @@ section.header h2 {
 section.header a {
     color: inherit;
 }
+
 section.post section.head, h1, h2, h3, h4, h5 {
     font-family: 'Quicksand', sans-serif;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 

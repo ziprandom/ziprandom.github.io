@@ -1,5 +1,5 @@
 +++
-author = "Zip Random"
+author = "ziprandom"
 tags = ["javascript", "react", "functional"]
 title = "2016 - Personal Choice for WebApp Development"
 date = "2016-09-23T16:00:00-03:00"
@@ -24,24 +24,24 @@ The by far handiest js build system and dev server I've encountered is [Webpack]
 ```javascript
 const PostsTemplate = ({posts, page, setPage}) => (
   <div>
-    /* Navigation */
-    {posts.map(
-      (_, index) => (
-        <a onClick={() => setPage(index)}>
-          {index}
-        </a>
-      )
-    )}
-    /* Posts Carousel */
-    <Slider>
-    {posts.map(
-      (post, index) => (
-        <Slide className={index == page ? 'active' : 'hidden'}>
-          <PostTemplate post={post} />
-        </Slide>
-      )
-    )}
-    </Slider>
+	/* Navigation */
+	{posts.map(
+	  (_, index) => (
+		<a onClick={() => setPage(index)}>
+		  {index}
+		</a>
+	  )
+	)}
+	/* Posts Carousel */
+	<Slider>
+	{posts.map(
+	  (post, index) => (
+		<Slide className={index == page ? 'active' : 'hidden'}>
+		  <PostTemplate post={post} />
+		</Slide>
+	  )
+	)}
+	</Slider>
   </div>
 );
 ```
@@ -50,24 +50,24 @@ const PostsTemplate = ({posts, page, setPage}) => (
 ```javascript
 const OnPostsFromStateRefresh = recompose.compose(
   recompose.mapPropsStream(
-    () => stateStream.distinctUntilChanged(
-      /* wait until (posts or page) change
-         ignore rest of the states updates */
-      (state) => [
-          state.get('posts'), state.get('page')
-      ]
-    )
+	() => stateStream.distinctUntilChanged(
+	  /* wait until (posts or page) change
+		 ignore rest of the states updates */
+	  (state) => [
+		  state.get('posts'), state.get('page')
+	  ]
+	)
   ),
   /* extract what we need to render the
-     PostsTemplate */
+	 PostsTemplate */
   recompose.mapProps(
-    (state) => ({
-      posts: state.get('posts'),
-      page: state.get('page'),
-      /* here we take a cursor
-         and pass its set function */
-      setPage: state.select('page').set
-    })
+	(state) => ({
+	  posts: state.get('posts'),
+	  page: state.get('page'),
+	  /* here we take a cursor
+		 and pass its set function */
+	  setPage: state.select('page').set
+	})
   )
 );
 ```
@@ -86,8 +86,8 @@ import recompose from 'recompose';
 
 // the initial State
 let state = new BaoBab({
-    posts: [],
-    page: 0
+	posts: [],
+	page: 0
 });
 
 // couple the BaoBab event based updateCallback
@@ -161,8 +161,8 @@ And I press Return
 Then a "post" to "/api/todos" should have happened with:
 """
   {
-    "title": "My fancy new Todo",
-    "completed": false
+	"title": "My fancy new Todo",
+	"completed": false
   }
 """
 
@@ -171,9 +171,9 @@ Then a "post" to "/api/todos" should have happened with:
 Given the API responds to the "post" on "/api/todos" with "201":
 """
   {
-    "id": 5701886678138880,
-    "title": "My fancy new Todo",
-    "completed": false
+	"id": 5701886678138880,
+	"title": "My fancy new Todo",
+	"completed": false
   }
 """
 

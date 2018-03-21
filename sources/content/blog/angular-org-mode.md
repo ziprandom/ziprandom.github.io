@@ -1,5 +1,5 @@
 +++
-author = "Zip Random"
+author = "ziprandom"
 tags = ["emacs", "angular.js"]
 title = "Org-Mode Powered AngularJS Boilerplate"
 date = "2013-11-04T16:00:00-03:00"
@@ -19,7 +19,7 @@ parenthesis ) for coffee to be set up correctly.
 
 
 -   the coffee script compiler (coffee command line tool to translate
-    coffe-script into java-script)
+	coffe-script into java-script)
 -   Emacs 24
 -   org-mode (via M-x install-package inside Emacs)
 -   coffee-mode (via M-x install-package)
@@ -55,16 +55,16 @@ automatic coffe-script compilation.
 
 ``` {.commonlisp}
   (add-hook 'org-babel-post-tangle-hook
-            (
-             lambda ()
-                    (setq coffee-command "/usr/bin/coffee")
-                    (coffee-compile-file)
+			(
+			 lambda ()
+					(setq coffee-command "/usr/bin/coffee")
+					(coffee-compile-file)
 
-                    (browse-url (concat
-                                 "file:" (file-name-directory buffer-file-name)
-                                 "index.html"))
-                    )
-            )
+					(browse-url (concat
+								 "file:" (file-name-directory buffer-file-name)
+								 "index.html"))
+					)
+			)
 ```
 
 #### 4.2 Html Template
@@ -82,35 +82,35 @@ via the **ng-model** directive.
 ``` {.commonlisp}
   <!doctype html>
   <html ng-app="app">
-    <head>
-      <link rel="stylesheet" href="css/style.css">
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-      <script src="http://code.angularjs.org/1.0.8/angular-sanitize.min.js"></script>
-      <script src="project.js"></script>
-    </head>
-    <body ng-controller="MainCtrl">
-      <div id="table">
-        Click on the table headings for sorting.
-        <table class="table-body">
-          <tr>
-            <th><a href="#" ng-class="{bold: sortVar == 'name'}" ng-click="sortVar = 'name'">Name</a></th>
-            <th><a href="#" ng-class="{bold: sortVar == 'age'}" ng-click="sortVar = 'age'">Age</a></th>
-            <th><a href="#" ng-class="{bold: sortVar == 'email'}" ng-click="sortVar = 'email'">Email</a></th>
-          </tr>
-          <tr ng-repeat="object in objects | orderBy:sortVar | filter:query" ng-class="object.name" id="{{object.email}}">
-            <td ng-bind="object.name"></td>
-            <td><span ng-bind="object.age"></span> <a ng-click="object.age = object.age + 1" href="#">+</a>  <a ng-click="object.age = object.age - 1" href="#">-</a></td>
+	<head>
+	  <link rel="stylesheet" href="css/style.css">
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	  <script src="http://code.angularjs.org/1.0.8/angular-sanitize.min.js"></script>
+	  <script src="project.js"></script>
+	</head>
+	<body ng-controller="MainCtrl">
+	  <div id="table">
+		Click on the table headings for sorting.
+		<table class="table-body">
+		  <tr>
+			<th><a href="#" ng-class="{bold: sortVar == 'name'}" ng-click="sortVar = 'name'">Name</a></th>
+			<th><a href="#" ng-class="{bold: sortVar == 'age'}" ng-click="sortVar = 'age'">Age</a></th>
+			<th><a href="#" ng-class="{bold: sortVar == 'email'}" ng-click="sortVar = 'email'">Email</a></th>
+		  </tr>
+		  <tr ng-repeat="object in objects | orderBy:sortVar | filter:query" ng-class="object.name" id="{{object.email}}">
+			<td ng-bind="object.name"></td>
+			<td><span ng-bind="object.age"></span> <a ng-click="object.age = object.age + 1" href="#">+</a>  <a ng-click="object.age = object.age - 1" href="#">-</a></td>
 
-            <td ng-bind="object.email"></td>
-          </tr>
-      </div>
-      <br/>
-      <div id="controlls">
-        Filter Table:
-        <input type="text" ng-model="query" />
-      </div>
-    </body>
+			<td ng-bind="object.email"></td>
+		  </tr>
+	  </div>
+	  <br/>
+	  <div id="controlls">
+		Filter Table:
+		<input type="text" ng-model="query" />
+	  </div>
+	</body>
   </html>
 ```
 
@@ -133,46 +133,46 @@ iterate over it via the ng-repeat directive in the view.
   angular.module('app', ['ngSanitize'])
   ## Controllers
   @MainCtrl = ($scope, $http) ->
-          $scope.sortVar = 'name'
-          $scope.objects = [
-                                  name: "otto"
-                                  age: 23
-                                  email: "der.otto@nowhe.re",
+		  $scope.sortVar = 'name'
+		  $scope.objects = [
+								  name: "otto"
+								  age: 23
+								  email: "der.otto@nowhe.re",
 
-                                     name: "fred"
-                                     age: 19
-                                     email: "man-fred@nowhe.re",
+									 name: "fred"
+									 age: 19
+									 email: "man-fred@nowhe.re",
 
-                                  name: "liza"
-                                  age: 27
-                                  email: "liza@nowhe.re",
+								  name: "liza"
+								  age: 27
+								  email: "liza@nowhe.re",
 
-                                     name: "clara"
-                                     age: 26
-                                     email: "oclara@nowhe.re",
+									 name: "clara"
+									 age: 26
+									 email: "oclara@nowhe.re",
 
-                                  name: "mike"
-                                  age: 23
-                                  email: "mike@nowhe.re"]
-          $scope.query = ""
-          $scope.clear = () ->
-                    $scope.$apply () ->
-                            $scope.query = ""
+								  name: "mike"
+								  age: 23
+								  email: "mike@nowhe.re"]
+		  $scope.query = ""
+		  $scope.clear = () ->
+					$scope.$apply () ->
+							$scope.query = ""
 ```
 
 #### 4.4 Style.css
 
 ``` {.css}
   .bold {
-      font-weight: bold;
+	  font-weight: bold;
   }
   a {
-      text-decoration: none;
+	  text-decoration: none;
   }
   #table {
-      float: left;
+	  float: left;
   }
   #controlls {
-      float: left;
+	  float: left;
   }
 ```

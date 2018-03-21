@@ -7,15 +7,15 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="column column-offset-10 column-80">
-          {{ partial "header.html" . }}
+	<div class="column column-offset-10 column-80">
+	  {{ partial "header.html" . }}
 
-          <ul>
-            {{ range .Data.Pages }}
-            {{ partial "post_list.html" .}}
-            {{ end }}
-          </ul>
-        </div>
+	  <ul>
+	    {{ range .Pages }}
+	    {{ partial "post_list.html" .}}
+	    {{ end }}
+	  </ul>
+	</div>
       </div>
     </div>
     {{ partial "footer.html" . }}
