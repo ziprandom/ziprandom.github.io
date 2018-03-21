@@ -31,15 +31,15 @@
   <div class="column column-offset-10 column-70">
     <section class="header">
       <h2>
-        <a href=https://ziprandom.github.io/>random comments</a>
+	<a href=/>random comments</a>
       </h2>
     </section>
     <div class="page-subtitle" >
-    
+      
       <p><a href="https://www.github.com/ziprandom">github/ziprandom</a> -
-A place to publish insights, snippets and research.</p>
+A place to publish insights, <a href="/scratchpad">snippets</a> and research.</p>
 
-    
+      
     </div>
   </div>
 
@@ -66,46 +66,47 @@ A place to publish insights, snippets and research.</p>
   <section class="body">
     <p>Using crystals llvm bindings to create an LLVM IR for the simple addition example.</p>
 
+<p></p>
+
 <pre><code class="language-ruby">  require &quot;llvm&quot;
 
   LLVM.init_x86
   LLVM::Module.new(&quot;main&quot;).tap do | main_module |          # ; ModuleID = 'main'
-    main_module.functions.add(                             # define i32 @main() {
-      &quot;main&quot;,
-      Array.new(0, LLVM::Int32),
-      LLVM::Int32
-    ).basic_blocks.append &quot;entry&quot; do |builder|             # entry:
-      a = builder.alloca(LLVM::Int32,&quot;a&quot;)                  #  %a = alloca i32
-      b = builder.alloca(LLVM::Int32,&quot;b&quot;)                  #  %b = alloca i32
-      builder.store(LLVM.int(LLVM::Int32, 40), a)          #  store i32 40, i32* %a
-      builder.store(LLVM.int(LLVM::Int32, 6), b)           #  store i32 6, i32* %b
-      bval = builder.load(a, &quot;val_a&quot;)                      #  %val_a = load i32* %a
-      aval = builder.load(b, &quot;val_b&quot;)                      #  %val_b = load i32* %b
-      result = builder.add(aval, bval, &quot;ab_val&quot;)           #  %ab_val = add i32 %val_b, %val_a
-      builder.ret result                                   #  ret i32 %ab_val
-    end                                                    # }
+	main_module.functions.add(                             # define i32 @main() {
+	  &quot;main&quot;,
+	  Array.new(0, LLVM::Int32),
+	  LLVM::Int32
+	).basic_blocks.append &quot;entry&quot; do |builder|             # entry:
+	  a = builder.alloca(LLVM::Int32,&quot;a&quot;)                  #  %a = alloca i32
+	  b = builder.alloca(LLVM::Int32,&quot;b&quot;)                  #  %b = alloca i32
+	  builder.store(LLVM.int(LLVM::Int32, 40), a)          #  store i32 40, i32* %a
+	  builder.store(LLVM.int(LLVM::Int32, 6), b)           #  store i32 6, i32* %b
+	  bval = builder.load(a, &quot;val_a&quot;)                      #  %val_a = load i32* %a
+	  aval = builder.load(b, &quot;val_b&quot;)                      #  %val_b = load i32* %b
+	  result = builder.add(aval, bval, &quot;ab_val&quot;)           #  %ab_val = add i32 %val_b, %val_a
+	  builder.ret result                                   #  ret i32 %ab_val
+	end                                                    # }
   end.tap(&amp;.dump).tap(&amp;.verify).tap do | main_module |
-    # execute in llvm
-    engine = LLVM::JITCompiler.new( main_module)
-    result = engine.run_function(
-      main_module.functions[&quot;main&quot;],
-      [] of LLVM::GenericValue
-    )
-    pp result.to_i
+	# execute in llvm
+	engine = LLVM::JITCompiler.new( main_module)
+	result = engine.run_function(
+	  main_module.functions[&quot;main&quot;],
+	  [] of LLVM::GenericValue
+	)
+	pp result.to_i
   end.tap do | main_module |
-    # generate bit code
-    LibLLVM.write_bitcode_to_file(
-      main_module, &quot;./out.bc&quot;
-    )
-    `llc-3.6 -filetype=obj out.bc`
-    `gcc -o out out.o`
-    puts &quot;wrote program to out\n\n&quot;
-    puts &quot;run with: './out'\n\n&quot;
-    puts &quot;doesn't have a print command\n\n&quot;
-    puts &quot;see result with: 'echo $?'\n\n&quot;
+	# generate bit code
+	LibLLVM.write_bitcode_to_file(
+	  main_module, &quot;./out.bc&quot;
+	)
+	`llc-3.6 -filetype=obj out.bc`
+	`gcc -o out out.o`
+	puts &quot;wrote program to out\n\n&quot;
+	puts &quot;run with: './out'\n\n&quot;
+	puts &quot;doesn't have a print command\n\n&quot;
+	puts &quot;see result with: 'echo $?'\n\n&quot;
   end
 </code></pre>
-
   </section>
 </section>
 

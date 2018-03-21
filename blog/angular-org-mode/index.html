@@ -31,15 +31,15 @@
   <div class="column column-offset-10 column-70">
     <section class="header">
       <h2>
-        <a href=https://ziprandom.github.io/>random comments</a>
+	<a href=/>random comments</a>
       </h2>
     </section>
     <div class="page-subtitle" >
-    
+      
       <p><a href="https://www.github.com/ziprandom">github/ziprandom</a> -
-A place to publish insights, snippets and research.</p>
+A place to publish insights, <a href="/scratchpad">snippets</a> and research.</p>
 
-    
+      
     </div>
   </div>
 
@@ -64,11 +64,11 @@ A place to publish insights, snippets and research.</p>
     </section>
   </section>
   <section class="body">
-    
-
-<p>This is my custom angular.js boilerplate Setup based on Emacs&rsquo;s Org Mode
+    <p>This is my custom angular.js boilerplate Setup based on Emacs&rsquo;s Org Mode
 and it´s impressive tangle functionality. You can load this page´s org
 source code in Emacs and start playing around with angular.</p>
+
+<p></p>
 
 <p>After opening the File in an emacs Buffer the elisp source block in the
 post-processing section has to be evaluated ( C-x C-e after the last
@@ -115,16 +115,16 @@ your cursor placed inside the code-block.</p>
 automatic coffe-script compilation.</p>
 
 <pre><code class="language-commonlisp">  (add-hook 'org-babel-post-tangle-hook
-            (
-             lambda ()
-                    (setq coffee-command &quot;/usr/bin/coffee&quot;)
-                    (coffee-compile-file)
+			(
+			 lambda ()
+					(setq coffee-command &quot;/usr/bin/coffee&quot;)
+					(coffee-compile-file)
 
-                    (browse-url (concat
-                                 &quot;file:&quot; (file-name-directory buffer-file-name)
-                                 &quot;index.html&quot;))
-                    )
-            )
+					(browse-url (concat
+								 &quot;file:&quot; (file-name-directory buffer-file-name)
+								 &quot;index.html&quot;))
+					)
+			)
 </code></pre>
 
 <h4 id="4-2-html-template">4.2 Html Template</h4>
@@ -141,35 +141,35 @@ via the <strong>ng-model</strong> directive.</p>
 
 <pre><code class="language-commonlisp">  &lt;!doctype html&gt;
   &lt;html ng-app=&quot;app&quot;&gt;
-    &lt;head&gt;
-      &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
-      &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
-      &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js&quot;&gt;&lt;/script&gt;
-      &lt;script src=&quot;http://code.angularjs.org/1.0.8/angular-sanitize.min.js&quot;&gt;&lt;/script&gt;
-      &lt;script src=&quot;project.js&quot;&gt;&lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body ng-controller=&quot;MainCtrl&quot;&gt;
-      &lt;div id=&quot;table&quot;&gt;
-        Click on the table headings for sorting.
-        &lt;table class=&quot;table-body&quot;&gt;
-          &lt;tr&gt;
-            &lt;th&gt;&lt;a href=&quot;#&quot; ng-class=&quot;{bold: sortVar == 'name'}&quot; ng-click=&quot;sortVar = 'name'&quot;&gt;Name&lt;/a&gt;&lt;/th&gt;
-            &lt;th&gt;&lt;a href=&quot;#&quot; ng-class=&quot;{bold: sortVar == 'age'}&quot; ng-click=&quot;sortVar = 'age'&quot;&gt;Age&lt;/a&gt;&lt;/th&gt;
-            &lt;th&gt;&lt;a href=&quot;#&quot; ng-class=&quot;{bold: sortVar == 'email'}&quot; ng-click=&quot;sortVar = 'email'&quot;&gt;Email&lt;/a&gt;&lt;/th&gt;
-          &lt;/tr&gt;
-          &lt;tr ng-repeat=&quot;object in objects | orderBy:sortVar | filter:query&quot; ng-class=&quot;object.name&quot; id=&quot;{{object.email}}&quot;&gt;
-            &lt;td ng-bind=&quot;object.name&quot;&gt;&lt;/td&gt;
-            &lt;td&gt;&lt;span ng-bind=&quot;object.age&quot;&gt;&lt;/span&gt; &lt;a ng-click=&quot;object.age = object.age + 1&quot; href=&quot;#&quot;&gt;+&lt;/a&gt;  &lt;a ng-click=&quot;object.age = object.age - 1&quot; href=&quot;#&quot;&gt;-&lt;/a&gt;&lt;/td&gt;
+	&lt;head&gt;
+	  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+	  &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+	  &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js&quot;&gt;&lt;/script&gt;
+	  &lt;script src=&quot;http://code.angularjs.org/1.0.8/angular-sanitize.min.js&quot;&gt;&lt;/script&gt;
+	  &lt;script src=&quot;project.js&quot;&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body ng-controller=&quot;MainCtrl&quot;&gt;
+	  &lt;div id=&quot;table&quot;&gt;
+		Click on the table headings for sorting.
+		&lt;table class=&quot;table-body&quot;&gt;
+		  &lt;tr&gt;
+			&lt;th&gt;&lt;a href=&quot;#&quot; ng-class=&quot;{bold: sortVar == 'name'}&quot; ng-click=&quot;sortVar = 'name'&quot;&gt;Name&lt;/a&gt;&lt;/th&gt;
+			&lt;th&gt;&lt;a href=&quot;#&quot; ng-class=&quot;{bold: sortVar == 'age'}&quot; ng-click=&quot;sortVar = 'age'&quot;&gt;Age&lt;/a&gt;&lt;/th&gt;
+			&lt;th&gt;&lt;a href=&quot;#&quot; ng-class=&quot;{bold: sortVar == 'email'}&quot; ng-click=&quot;sortVar = 'email'&quot;&gt;Email&lt;/a&gt;&lt;/th&gt;
+		  &lt;/tr&gt;
+		  &lt;tr ng-repeat=&quot;object in objects | orderBy:sortVar | filter:query&quot; ng-class=&quot;object.name&quot; id=&quot;{{object.email}}&quot;&gt;
+			&lt;td ng-bind=&quot;object.name&quot;&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;span ng-bind=&quot;object.age&quot;&gt;&lt;/span&gt; &lt;a ng-click=&quot;object.age = object.age + 1&quot; href=&quot;#&quot;&gt;+&lt;/a&gt;  &lt;a ng-click=&quot;object.age = object.age - 1&quot; href=&quot;#&quot;&gt;-&lt;/a&gt;&lt;/td&gt;
 
-            &lt;td ng-bind=&quot;object.email&quot;&gt;&lt;/td&gt;
-          &lt;/tr&gt;
-      &lt;/div&gt;
-      &lt;br/&gt;
-      &lt;div id=&quot;controlls&quot;&gt;
-        Filter Table:
-        &lt;input type=&quot;text&quot; ng-model=&quot;query&quot; /&gt;
-      &lt;/div&gt;
-    &lt;/body&gt;
+			&lt;td ng-bind=&quot;object.email&quot;&gt;&lt;/td&gt;
+		  &lt;/tr&gt;
+	  &lt;/div&gt;
+	  &lt;br/&gt;
+	  &lt;div id=&quot;controlls&quot;&gt;
+		Filter Table:
+		&lt;input type=&quot;text&quot; ng-model=&quot;query&quot; /&gt;
+	  &lt;/div&gt;
+	&lt;/body&gt;
   &lt;/html&gt;
 </code></pre>
 
@@ -191,49 +191,48 @@ iterate over it via the ng-repeat directive in the view.</p>
   angular.module('app', ['ngSanitize'])
   ## Controllers
   @MainCtrl = ($scope, $http) -&gt;
-          $scope.sortVar = 'name'
-          $scope.objects = [
-                                  name: &quot;otto&quot;
-                                  age: 23
-                                  email: &quot;der.otto@nowhe.re&quot;,
+		  $scope.sortVar = 'name'
+		  $scope.objects = [
+								  name: &quot;otto&quot;
+								  age: 23
+								  email: &quot;der.otto@nowhe.re&quot;,
 
-                                     name: &quot;fred&quot;
-                                     age: 19
-                                     email: &quot;man-fred@nowhe.re&quot;,
+									 name: &quot;fred&quot;
+									 age: 19
+									 email: &quot;man-fred@nowhe.re&quot;,
 
-                                  name: &quot;liza&quot;
-                                  age: 27
-                                  email: &quot;liza@nowhe.re&quot;,
+								  name: &quot;liza&quot;
+								  age: 27
+								  email: &quot;liza@nowhe.re&quot;,
 
-                                     name: &quot;clara&quot;
-                                     age: 26
-                                     email: &quot;oclara@nowhe.re&quot;,
+									 name: &quot;clara&quot;
+									 age: 26
+									 email: &quot;oclara@nowhe.re&quot;,
 
-                                  name: &quot;mike&quot;
-                                  age: 23
-                                  email: &quot;mike@nowhe.re&quot;]
-          $scope.query = &quot;&quot;
-          $scope.clear = () -&gt;
-                    $scope.$apply () -&gt;
-                            $scope.query = &quot;&quot;
+								  name: &quot;mike&quot;
+								  age: 23
+								  email: &quot;mike@nowhe.re&quot;]
+		  $scope.query = &quot;&quot;
+		  $scope.clear = () -&gt;
+					$scope.$apply () -&gt;
+							$scope.query = &quot;&quot;
 </code></pre>
 
 <h4 id="4-4-style-css">4.4 Style.css</h4>
 
 <pre><code class="language-css">  .bold {
-      font-weight: bold;
+	  font-weight: bold;
   }
   a {
-      text-decoration: none;
+	  text-decoration: none;
   }
   #table {
-      float: left;
+	  float: left;
   }
   #controlls {
-      float: left;
+	  float: left;
   }
 </code></pre>
-
   </section>
 </section>
 

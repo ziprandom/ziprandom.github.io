@@ -2,420 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on random comments</title>
-    <link>https://ziprandom.github.io/blog/</link>
+    <link>/blog/</link>
     <description>Recent content in Blogs on random comments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 23 Sep 2016 16:00:00 -0300</lastBuildDate>
-    <atom:link href="https://ziprandom.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>2016 - Personal Choice for WebApp Development</title>
-      <link>https://ziprandom.github.io/blog/2016_js_development_choice/</link>
+      <link>/blog/2016_js_development_choice/</link>
       <pubDate>Fri, 23 Sep 2016 16:00:00 -0300</pubDate>
       
-      <guid>https://ziprandom.github.io/blog/2016_js_development_choice/</guid>
-      <description>
+      <guid>/blog/2016_js_development_choice/</guid>
+      <description>&lt;p&gt;Just a snapshot of what I use for effective &amp;amp; fun JS Webdevelopment right now with some overall description of application design and the libs &amp;amp; tools used.&lt;/p&gt;
 
-&lt;p&gt;Just a snapshot of what I use for effective &amp;amp; fun JS Webdevelopment right now with some overall description of application design and the libs &amp;amp; tools used.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;tl;dr&lt;/strong&gt; [ &lt;a href=&#34;https://facebook.github.io/react/&#34;&gt;React&lt;/a&gt; + &lt;a href=&#34;https://github.com/Yomguithereal/baobab&#34;&gt;Baobab&lt;/a&gt; + &lt;a href=&#34;https://github.com/Reactive-Extensions/RxJS&#34;&gt;RxJS&lt;/a&gt; + &lt;a href=&#34;https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md&#34;&gt;RxJS - Observable Sequenceses&lt;/a&gt; + &lt;a href=&#34;https://webpack.github.io/&#34;&gt;Webpack&lt;/a&gt; + &lt;a href=&#34;https://babeljs.io/docs/setup/#installation&#34;&gt;Babel&lt;/a&gt; + &lt;a href=&#34;https://facebook.github.io/react/docs/reusable-components.html#stateless-functions&#34;&gt;Stateless &amp;amp; Pure Functional Components&lt;/a&gt; + &lt;a href=&#34;https://github.com/acdlite/recompose/blob/master/docs/API.md&#34;&gt;React utility belt of Higher Order Components - Recompose&lt;/a&gt; + &lt;a href=&#34;http://visionmedia.github.io/superagent/&#34;&gt;superagent - ajax with less suck&lt;/a&gt; + &lt;a href=&#34;https://github.com/christianalfoni/markdown-to-react-components&#34;&gt;markdown-to-react-components&lt;/a&gt; + &lt;a href=&#34;https://chimp.readme.io/&#34;&gt;chimp test framework&lt;/a&gt; + &lt;a href=&#34;https://chimp.readme.io/docs/getting-started&#34;&gt;chimp with cucumber scenarios&lt;/a&gt; + &lt;a href=&#34;http://jasmine.github.io/&#34;&gt;yasmine unit tests&lt;/a&gt; + &lt;a href=&#34;https://github.com/ziprandom/cucumberjs-json-api-mocking&#34;&gt;cucumberjs-json-api-mocking&lt;/a&gt; + &lt;a href=&#34;http://web-mode.org/&#34;&gt;emacs web-mode&lt;/a&gt; ]&lt;/p&gt;
-
-&lt;p&gt;JS webapp development has become really fun for me since I finally learned &lt;a href=&#34;https://facebook.github.io/react/&#34;&gt;React&lt;/a&gt;. What I do ever since is build UI centric Applications around a preferably immutable state. I tried &lt;a href=&#34;http://redux.js.org/&#34;&gt;Redux&lt;/a&gt; but found it to be overhead for the small applications I developed. So I mostly stick with the &lt;a href=&#34;https://github.com/Yomguithereal/baobab&#34;&gt;Baobab&lt;/a&gt; immutable data tree that I serve as a &lt;a href=&#34;https://github.com/Reactive-Extensions/RxJS&#34;&gt;RxJS&lt;/a&gt; &lt;a href=&#34;https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md&#34;&gt;Observable Sequence&lt;/a&gt;, a stream that flows through the application from (abstraction) top to bottom.&lt;/p&gt;
-
-&lt;h3 id=&#34;development-processing-bundling-with-webpack&#34;&gt;Development, Processing &amp;amp; Bundling with Webpack&lt;/h3&gt;
-
-&lt;p&gt;The by far handiest js build system and dev server I&amp;rsquo;ve encountered is &lt;a href=&#34;https://webpack.github.io/&#34;&gt;Webpack&lt;/a&gt;. I use it with the &lt;a href=&#34;https://babeljs.io/docs/setup/#installation&#34;&gt;Babel&lt;/a&gt; transpiler to polyfill ES6 syntax (&lt;code&gt;({a, b}) =&amp;gt; ({a,...b})&lt;/code&gt;) with Reacts JSX &lt;code&gt;&amp;lt;MyFunkyComponent/&amp;gt;&lt;/code&gt; as well as preprocess and deliver css, fonts and assets bundled inside that same minified js file. Basically everything is available through the &lt;code&gt;import&lt;/code&gt; (&lt;code&gt;@import&lt;/code&gt; for styles) or &lt;code&gt;require&lt;/code&gt; syntax. I love it so much! &lt;a href=&#34;https://www.npmjs.com/&#34;&gt;Node Package Manager&lt;/a&gt; is used to install everything I need. And &lt;a href=&#34;https://www.docker.com/&#34;&gt;docker&lt;/a&gt; hosts the whole js dev environment.&lt;/p&gt;
-
-&lt;h3 id=&#34;ui-templating-with-stateless-functional-components&#34;&gt;UI &amp;amp; Templating with Stateless Functional Components&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Templates as Pure Function Components&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const PostsTemplate = ({posts, page, setPage}) =&amp;gt; (
-  &amp;lt;div&amp;gt;
-    /* Navigation */
-    {posts.map(
-      (_, index) =&amp;gt; (
-        &amp;lt;a onClick={() =&amp;gt; setPage(index)}&amp;gt;
-          {index}
-        &amp;lt;/a&amp;gt;
-      )
-    )}
-    /* Posts Carousel */
-    &amp;lt;Slider&amp;gt;
-    {posts.map(
-      (post, index) =&amp;gt; (
-        &amp;lt;Slide className={index == page ? &#39;active&#39; : &#39;hidden&#39;}&amp;gt;
-          &amp;lt;PostTemplate post={post} /&amp;gt;
-        &amp;lt;/Slide&amp;gt;
-      )
-    )}
-    &amp;lt;/Slider&amp;gt;
-  &amp;lt;/div&amp;gt;
-);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Higher Order Component to Decorate Template with State Stream Derived Data&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;const OnPostsFromStateRefresh = recompose.compose(
-  recompose.mapPropsStream(
-    () =&amp;gt; stateStream.distinctUntilChanged(
-      /* wait until (posts or page) change
-         ignore rest of the states updates */
-      (state) =&amp;gt; [
-          state.get(&#39;posts&#39;), state.get(&#39;page&#39;)
-      ]
-    )
-  ),
-  /* extract what we need to render the
-     PostsTemplate */
-  recompose.mapProps(
-    (state) =&amp;gt; ({
-      posts: state.get(&#39;posts&#39;),
-      page: state.get(&#39;page&#39;),
-      /* here we take a cursor
-         and pass its set function */
-      setPage: state.select(&#39;page&#39;).set
-    })
-  )
-);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Combine Template and Higher Order Component&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;module.exports = OnPostsFromStateRefresh(PostsTemplate);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I create hierarchical React components to layout the ui. React can express all of the ui&amp;rsquo;s logic and depends on the state for the data to display. The state or relevant-sections of it gets passed down the component hierarchy from the abstractest &lt;code&gt;&amp;lt;App&amp;gt;...&amp;lt;/App&lt;/code&gt; component down to the last &lt;code&gt;&amp;lt;button onClick={..}&amp;gt;...&amp;lt;/button&amp;gt;&lt;/code&gt; that directly renders to the button dom element. I don&amp;rsquo;t use ES6 Classes to express components, but instead define the as &lt;a href=&#34;https://facebook.github.io/react/docs/reusable-components.html#stateless-functions&#34;&gt;stateless &amp;amp; pure functions&lt;/a&gt; that take properties (including state) and return virtual dom nodes. By nesting Pure Functional Components in Higher Order Components (Components, that wrap Components to add or alter logic) a separation of logic is achieved in a functional way, not unlike Rails` middleware onion. I make excessive use of the Higher Order Components provided by the &lt;a href=&#34;https://github.com/acdlite/recompose/blob/master/docs/API.md&#34;&gt;React utility belt Recompose&lt;/a&gt; that also help in coupling the dom to the states Observable Stream.&lt;/p&gt;
-
-&lt;h3 id=&#34;immutable-global-state-with-baobab-rxjs&#34;&gt;Immutable Global State with BaoBab &amp;amp; RxJS&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;import BaoBab form &#39;baobab&#39;;
-import recompose from &#39;recompose&#39;;
-
-// the initial State
-let state = new BaoBab({
-    posts: [],
-    page: 0
-});
-
-// couple the BaoBab event based updateCallback
-// with an Observable Stream
-let handler = recompose.createEventHandler(state);
-state.on(&#39;update&#39;,
-  event =&amp;gt; handler.handler(event.target)
-)
-
-// create a higher order component
-// to wrap react components with
-// stateStream updates
-let onStateStream = recompose.mapPropsStream(
-  props$ =&amp;gt; handler.stream.startWith(state)
-);
-
-module.exports(onStateStream)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The state basically is &lt;strong&gt;one big immutable Hash&lt;/strong&gt; that gets passed to the Component (Render) Functions whenever it updates. The keys that didn&amp;rsquo;t change still have the same object id. So for an unchanged key &lt;code&gt;a&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;oldState.get(&#39;a&#39;)
-  === newState.get(&#39;a&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;holds true and components that are guarded by the &lt;code&gt;recompose.pure()&lt;/code&gt; Higher Order Component don&amp;rsquo;t do unnecessary updates. If the value of a part of the tree changes you are garanteed to get a new Object &lt;code&gt;!==&lt;/code&gt; the old State. So no expensive deep checking needs to be done (when you use recompose.pure or reacts shallowCompare).&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;postsCursor =
-  state.select(&#39;posts&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;returns a cursor that can be used to retrieve the value &lt;code&gt;postsCursor.get()&lt;/code&gt; as well as trigger a state update &lt;code&gt;postsCursor.set([])&lt;/code&gt;. Parts of the State can also be subscribed.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javasrcript&#34;&gt;postsCursor.on(
-  &#39;update&#39;,
-  (posts) =&amp;gt; ...
-)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;but this is better solved by directly consuming the State Observable Stream.&lt;/p&gt;
-
-&lt;h3 id=&#34;ide-editing&#34;&gt;IDE / Editing&lt;/h3&gt;
-
-&lt;p&gt;Emacs, what else :D &lt;a href=&#34;http://web-mode.org/&#34;&gt;web-mode&lt;/a&gt; does a nice job highlighting and aligning ES6 syntax and various template languages like JSX. Also did I find &lt;a href=&#34;https://magit.vc/&#34;&gt;magit&lt;/a&gt; to be the best way to use git.&lt;/p&gt;
-
-&lt;h3 id=&#34;libs-services&#34;&gt;Libs/Services&lt;/h3&gt;
-
-&lt;p&gt;The AJAX library of choice is &lt;a href=&#34;http://visionmedia.github.io/superagent/&#34;&gt;superagent&lt;/a&gt;. When I have to display bigger chunks of text I store these as Markdown Documents and use &lt;a href=&#34;https://github.com/christianalfoni/markdown-to-react-components&#34;&gt;markdown-to-react-components&lt;/a&gt; + webpack file inclusion on build time to pull it them into the app.&lt;/p&gt;
-
-&lt;h3 id=&#34;testing&#34;&gt;Testing&lt;/h3&gt;
-
-&lt;p&gt;I use &lt;a href=&#34;https://chimp.readme.io/&#34;&gt;chimp&lt;/a&gt; to run end-to-end tests defined in &lt;a href=&#34;https://chimp.readme.io/docs/getting-started&#34;&gt;cucumber scenarios&lt;/a&gt;. The nice separation of concerns let&amp;rsquo;s us easily test the dom independent parts like state and services with &lt;a href=&#34;http://jasmine.github.io/&#34;&gt;yasmine unit tests&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;For single page apps I like to write &lt;code&gt;DomInteraction-to-ApiCall&lt;/code&gt; &amp;amp; &lt;code&gt;ApiResults-to-DomLayout&lt;/code&gt; e2e-tests. Therefore I created a set of cucumber steps to define backend API mocks and ajax expectation inline in the gherkin file. From &lt;a href=&#34;https://github.com/ziprandom/cucumberjs-json-api-mocking&#34;&gt;github/cucumberjs-json-api-mocking&lt;/a&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-gherkin&#34;&gt;# The XMLHttpRequest and Response Mocks are
-# injected into the browser context. Every
-# call now gets intercepted,logged and answered
-# if a proper response is defined.
-And I start mocking &amp;quot;http://localhost:8000&amp;quot;
-
-# An API request is triggered via the ui
-When I input &amp;quot;My fancy new Todo&amp;quot; into the Todo Input
-And I press Return
-
-# Expected API behavior can be defined after the request
-Then a &amp;quot;post&amp;quot; to &amp;quot;/api/todos&amp;quot; should have happened with:
-&amp;quot;&amp;quot;&amp;quot;
-  {
-    &amp;quot;title&amp;quot;: &amp;quot;My fancy new Todo&amp;quot;,
-    &amp;quot;completed&amp;quot;: false
-  }
-&amp;quot;&amp;quot;&amp;quot;
-
-# API mocks can also be defined after the request was made
-# a loop waits 5 secs before a timeout is triggered.
-Given the API responds to the &amp;quot;post&amp;quot; on &amp;quot;/api/todos&amp;quot; with &amp;quot;201&amp;quot;:
-&amp;quot;&amp;quot;&amp;quot;
-  {
-    &amp;quot;id&amp;quot;: 5701886678138880,
-    &amp;quot;title&amp;quot;: &amp;quot;My fancy new Todo&amp;quot;,
-    &amp;quot;completed&amp;quot;: false
-  }
-&amp;quot;&amp;quot;&amp;quot;
-
-# When we made sure, the app makes the right api calls
-# and provide it with backend feedback we can go on
-# testing the ui.
-Then an active Todo &amp;quot;My fancy new Todo&amp;quot; should be visible
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Crystal LLVM IR API</title>
-      <link>https://ziprandom.github.io/blog/crystal-lang-llvm-api/</link>
+      <link>/blog/crystal-lang-llvm-api/</link>
       <pubDate>Thu, 28 Apr 2016 16:00:00 -0300</pubDate>
       
-      <guid>https://ziprandom.github.io/blog/crystal-lang-llvm-api/</guid>
+      <guid>/blog/crystal-lang-llvm-api/</guid>
       <description>&lt;p&gt;Using crystals llvm bindings to create an LLVM IR for the simple addition example.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;  require &amp;quot;llvm&amp;quot;
-
-  LLVM.init_x86
-  LLVM::Module.new(&amp;quot;main&amp;quot;).tap do | main_module |          # ; ModuleID = &#39;main&#39;
-    main_module.functions.add(                             # define i32 @main() {
-      &amp;quot;main&amp;quot;,
-      Array.new(0, LLVM::Int32),
-      LLVM::Int32
-    ).basic_blocks.append &amp;quot;entry&amp;quot; do |builder|             # entry:
-      a = builder.alloca(LLVM::Int32,&amp;quot;a&amp;quot;)                  #  %a = alloca i32
-      b = builder.alloca(LLVM::Int32,&amp;quot;b&amp;quot;)                  #  %b = alloca i32
-      builder.store(LLVM.int(LLVM::Int32, 40), a)          #  store i32 40, i32* %a
-      builder.store(LLVM.int(LLVM::Int32, 6), b)           #  store i32 6, i32* %b
-      bval = builder.load(a, &amp;quot;val_a&amp;quot;)                      #  %val_a = load i32* %a
-      aval = builder.load(b, &amp;quot;val_b&amp;quot;)                      #  %val_b = load i32* %b
-      result = builder.add(aval, bval, &amp;quot;ab_val&amp;quot;)           #  %ab_val = add i32 %val_b, %val_a
-      builder.ret result                                   #  ret i32 %ab_val
-    end                                                    # }
-  end.tap(&amp;amp;.dump).tap(&amp;amp;.verify).tap do | main_module |
-    # execute in llvm
-    engine = LLVM::JITCompiler.new( main_module)
-    result = engine.run_function(
-      main_module.functions[&amp;quot;main&amp;quot;],
-      [] of LLVM::GenericValue
-    )
-    pp result.to_i
-  end.tap do | main_module |
-    # generate bit code
-    LibLLVM.write_bitcode_to_file(
-      main_module, &amp;quot;./out.bc&amp;quot;
-    )
-    `llc-3.6 -filetype=obj out.bc`
-    `gcc -o out out.o`
-    puts &amp;quot;wrote program to out\n\n&amp;quot;
-    puts &amp;quot;run with: &#39;./out&#39;\n\n&amp;quot;
-    puts &amp;quot;doesn&#39;t have a print command\n\n&amp;quot;
-    puts &amp;quot;see result with: &#39;echo $?&#39;\n\n&amp;quot;
-  end
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Org-Mode Powered AngularJS Boilerplate</title>
-      <link>https://ziprandom.github.io/blog/angular-org-mode/</link>
+      <link>/blog/angular-org-mode/</link>
       <pubDate>Mon, 04 Nov 2013 16:00:00 -0300</pubDate>
       
-      <guid>https://ziprandom.github.io/blog/angular-org-mode/</guid>
-      <description>
-
-&lt;p&gt;This is my custom angular.js boilerplate Setup based on Emacs&amp;rsquo;s Org Mode
+      <guid>/blog/angular-org-mode/</guid>
+      <description>&lt;p&gt;This is my custom angular.js boilerplate Setup based on Emacs&amp;rsquo;s Org Mode
 and it´s impressive tangle functionality. You can load this page´s org
 source code in Emacs and start playing around with angular.&lt;/p&gt;
 
-&lt;p&gt;After opening the File in an emacs Buffer the elisp source block in the
-post-processing section has to be evaluated ( C-x C-e after the last
-parenthesis ) for coffee to be set up correctly.&lt;/p&gt;
-
-&lt;h3 id=&#34;1-requirements&#34;&gt;1 Requirements&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;the coffee script compiler (coffee command line tool to translate
-coffe-script into java-script)&lt;/li&gt;
-&lt;li&gt;Emacs 24&lt;/li&gt;
-&lt;li&gt;org-mode (via M-x install-package inside Emacs)&lt;/li&gt;
-&lt;li&gt;coffee-mode (via M-x install-package)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;2-creating-the-dummy&#34;&gt;2 Creating the Dummy&lt;/h3&gt;
-
-&lt;p&gt;in this org-files buffer run the command: M-x org-bable-tangleis creates
-a www directory inside the org-files location with these files:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;index.html&lt;/li&gt;
-&lt;li&gt;project.coffee&lt;/li&gt;
-&lt;li&gt;project.js&lt;/li&gt;
-&lt;li&gt;css/style.css&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;and tries to open the index.html in your browser. Now you can try out &lt;a href=&#34;https://ziprandom.github.io/stuff/www/index.html&#34;&gt;a
-very basic angular.js example&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;3-editing-the-code&#34;&gt;3 Editing the code&lt;/h3&gt;
-
-&lt;p&gt;You can navigate inside any of the code-blocks below and alter it´s
-contents. As soon as your finished run M-x org-bable-tangle again to
-export the source-code files. You can edit each code block in a separate
-buffer with the languages major mode activated by pressing C-c &amp;lsquo; with
-your cursor placed inside the code-block.&lt;/p&gt;
-
-&lt;h3 id=&#34;4-source-code&#34;&gt;4 Source Code&lt;/h3&gt;
-
-&lt;h4 id=&#34;4-1-post-processing-coffee-js&#34;&gt;4.1 Post-Processing (coffee -&amp;gt; js)&lt;/h4&gt;
-
-&lt;p&gt;This must be evaluated before the first tangle export in order to setup
-automatic coffe-script compilation.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-commonlisp&#34;&gt;  (add-hook &#39;org-babel-post-tangle-hook
-            (
-             lambda ()
-                    (setq coffee-command &amp;quot;/usr/bin/coffee&amp;quot;)
-                    (coffee-compile-file)
-
-                    (browse-url (concat
-                                 &amp;quot;file:&amp;quot; (file-name-directory buffer-file-name)
-                                 &amp;quot;index.html&amp;quot;))
-                    )
-            )
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;4-2-html-template&#34;&gt;4.2 Html Template&lt;/h4&gt;
-
-&lt;p&gt;The index.html associates the &amp;lt;html&amp;gt; tag with the overall app (angular
-module) and the &amp;lt;body&amp;gt; tag with the MainCtrl. This makes the \$scope
-variables (which includes functions) available inside the &amp;lt;body&amp;gt; tag.
-The &lt;strong&gt;ng-bind&lt;/strong&gt; attribute binds the contents of the tag to a variable or
-expression ( {{object.age + 1}} ). Note the very usefull ng-repeat
-directive. &lt;strong&gt;ng-click&lt;/strong&gt; evaluates the associated expression upon
-clicking. {{ &amp;hellip; }} Expressions are also used to directly map variables
-to attributes (id for example). Input fields can be bound to variables
-via the &lt;strong&gt;ng-model&lt;/strong&gt; directive.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-commonlisp&#34;&gt;  &amp;lt;!doctype html&amp;gt;
-  &amp;lt;html ng-app=&amp;quot;app&amp;quot;&amp;gt;
-    &amp;lt;head&amp;gt;
-      &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;css/style.css&amp;quot;&amp;gt;
-      &amp;lt;script src=&amp;quot;http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-      &amp;lt;script src=&amp;quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-      &amp;lt;script src=&amp;quot;http://code.angularjs.org/1.0.8/angular-sanitize.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-      &amp;lt;script src=&amp;quot;project.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
-    &amp;lt;/head&amp;gt;
-    &amp;lt;body ng-controller=&amp;quot;MainCtrl&amp;quot;&amp;gt;
-      &amp;lt;div id=&amp;quot;table&amp;quot;&amp;gt;
-        Click on the table headings for sorting.
-        &amp;lt;table class=&amp;quot;table-body&amp;quot;&amp;gt;
-          &amp;lt;tr&amp;gt;
-            &amp;lt;th&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; ng-class=&amp;quot;{bold: sortVar == &#39;name&#39;}&amp;quot; ng-click=&amp;quot;sortVar = &#39;name&#39;&amp;quot;&amp;gt;Name&amp;lt;/a&amp;gt;&amp;lt;/th&amp;gt;
-            &amp;lt;th&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; ng-class=&amp;quot;{bold: sortVar == &#39;age&#39;}&amp;quot; ng-click=&amp;quot;sortVar = &#39;age&#39;&amp;quot;&amp;gt;Age&amp;lt;/a&amp;gt;&amp;lt;/th&amp;gt;
-            &amp;lt;th&amp;gt;&amp;lt;a href=&amp;quot;#&amp;quot; ng-class=&amp;quot;{bold: sortVar == &#39;email&#39;}&amp;quot; ng-click=&amp;quot;sortVar = &#39;email&#39;&amp;quot;&amp;gt;Email&amp;lt;/a&amp;gt;&amp;lt;/th&amp;gt;
-          &amp;lt;/tr&amp;gt;
-          &amp;lt;tr ng-repeat=&amp;quot;object in objects | orderBy:sortVar | filter:query&amp;quot; ng-class=&amp;quot;object.name&amp;quot; id=&amp;quot;{{object.email}}&amp;quot;&amp;gt;
-            &amp;lt;td ng-bind=&amp;quot;object.name&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;
-            &amp;lt;td&amp;gt;&amp;lt;span ng-bind=&amp;quot;object.age&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;a ng-click=&amp;quot;object.age = object.age + 1&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;+&amp;lt;/a&amp;gt;  &amp;lt;a ng-click=&amp;quot;object.age = object.age - 1&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;-&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;
-
-            &amp;lt;td ng-bind=&amp;quot;object.email&amp;quot;&amp;gt;&amp;lt;/td&amp;gt;
-          &amp;lt;/tr&amp;gt;
-      &amp;lt;/div&amp;gt;
-      &amp;lt;br/&amp;gt;
-      &amp;lt;div id=&amp;quot;controlls&amp;quot;&amp;gt;
-        Filter Table:
-        &amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;query&amp;quot; /&amp;gt;
-      &amp;lt;/div&amp;gt;
-    &amp;lt;/body&amp;gt;
-  &amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;4-3-coffee-script-code&#34;&gt;4.3 Coffee Script Code&lt;/h4&gt;
-
-&lt;p&gt;We define an angular.module an load the ngSanitize module (&lt;a href=&#34;http://docs.angularjs.org/api/angular.module&#34;&gt;more on
-angular.js modules&lt;/a&gt;) which
-could enable us to use the bindHtml directive to &lt;em&gt;securely&lt;/em&gt; bind html
-contents to elements (not used in this example).&lt;/p&gt;
-
-&lt;p&gt;Note also the definition of the MainCtrl Controller. Variables, that we
-want to be bound into the view have to be children of the \$scope
-object. We may update these bindings via \$scope.apply () -&amp;gt;
-\$scope.myCustomVar = &amp;ldquo;smth&amp;rdquo;. This is not allways necessary, don´t
-remember when exactly it is. Here we also define an array of objects to
-iterate over it via the ng-repeat directive in the view.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-coffee&#34;&gt;  # (setq coffee-command &amp;quot;coffee -j project.js&amp;quot;)
-  angular.module(&#39;app&#39;, [&#39;ngSanitize&#39;])
-  ## Controllers
-  @MainCtrl = ($scope, $http) -&amp;gt;
-          $scope.sortVar = &#39;name&#39;
-          $scope.objects = [
-                                  name: &amp;quot;otto&amp;quot;
-                                  age: 23
-                                  email: &amp;quot;der.otto@nowhe.re&amp;quot;,
-
-                                     name: &amp;quot;fred&amp;quot;
-                                     age: 19
-                                     email: &amp;quot;man-fred@nowhe.re&amp;quot;,
-
-                                  name: &amp;quot;liza&amp;quot;
-                                  age: 27
-                                  email: &amp;quot;liza@nowhe.re&amp;quot;,
-
-                                     name: &amp;quot;clara&amp;quot;
-                                     age: 26
-                                     email: &amp;quot;oclara@nowhe.re&amp;quot;,
-
-                                  name: &amp;quot;mike&amp;quot;
-                                  age: 23
-                                  email: &amp;quot;mike@nowhe.re&amp;quot;]
-          $scope.query = &amp;quot;&amp;quot;
-          $scope.clear = () -&amp;gt;
-                    $scope.$apply () -&amp;gt;
-                            $scope.query = &amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;4-4-style-css&#34;&gt;4.4 Style.css&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;  .bold {
-      font-weight: bold;
-  }
-  a {
-      text-decoration: none;
-  }
-  #table {
-      float: left;
-  }
-  #controlls {
-      float: left;
-  }
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

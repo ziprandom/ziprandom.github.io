@@ -31,15 +31,15 @@
   <div class="column column-offset-10 column-70">
     <section class="header">
       <h2>
-        <a href=https://ziprandom.github.io/>random comments</a>
+	<a href=/>random comments</a>
       </h2>
     </section>
     <div class="page-subtitle" >
-    
+      
       <p><a href="https://www.github.com/ziprandom">github/ziprandom</a> -
-A place to publish insights, snippets and research.</p>
+A place to publish insights, <a href="/scratchpad">snippets</a> and research.</p>
 
-    
+      
     </div>
   </div>
 
@@ -64,9 +64,9 @@ A place to publish insights, snippets and research.</p>
     </section>
   </section>
   <section class="body">
-    
+    <p>Just a snapshot of what I use for effective &amp; fun JS Webdevelopment right now with some overall description of application design and the libs &amp; tools used.</p>
 
-<p>Just a snapshot of what I use for effective &amp; fun JS Webdevelopment right now with some overall description of application design and the libs &amp; tools used.</p>
+<p></p>
 
 <p><strong>tl;dr</strong> [ <a href="https://facebook.github.io/react/">React</a> + <a href="https://github.com/Yomguithereal/baobab">Baobab</a> + <a href="https://github.com/Reactive-Extensions/RxJS">RxJS</a> + <a href="https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/creating.md">RxJS - Observable Sequenceses</a> + <a href="https://webpack.github.io/">Webpack</a> + <a href="https://babeljs.io/docs/setup/#installation">Babel</a> + <a href="https://facebook.github.io/react/docs/reusable-components.html#stateless-functions">Stateless &amp; Pure Functional Components</a> + <a href="https://github.com/acdlite/recompose/blob/master/docs/API.md">React utility belt of Higher Order Components - Recompose</a> + <a href="http://visionmedia.github.io/superagent/">superagent - ajax with less suck</a> + <a href="https://github.com/christianalfoni/markdown-to-react-components">markdown-to-react-components</a> + <a href="https://chimp.readme.io/">chimp test framework</a> + <a href="https://chimp.readme.io/docs/getting-started">chimp with cucumber scenarios</a> + <a href="http://jasmine.github.io/">yasmine unit tests</a> + <a href="https://github.com/ziprandom/cucumberjs-json-api-mocking">cucumberjs-json-api-mocking</a> + <a href="http://web-mode.org/">emacs web-mode</a> ]</p>
 
@@ -82,24 +82,24 @@ A place to publish insights, snippets and research.</p>
 
 <pre><code class="language-javascript">const PostsTemplate = ({posts, page, setPage}) =&gt; (
   &lt;div&gt;
-    /* Navigation */
-    {posts.map(
-      (_, index) =&gt; (
-        &lt;a onClick={() =&gt; setPage(index)}&gt;
-          {index}
-        &lt;/a&gt;
-      )
-    )}
-    /* Posts Carousel */
-    &lt;Slider&gt;
-    {posts.map(
-      (post, index) =&gt; (
-        &lt;Slide className={index == page ? 'active' : 'hidden'}&gt;
-          &lt;PostTemplate post={post} /&gt;
-        &lt;/Slide&gt;
-      )
-    )}
-    &lt;/Slider&gt;
+	/* Navigation */
+	{posts.map(
+	  (_, index) =&gt; (
+		&lt;a onClick={() =&gt; setPage(index)}&gt;
+		  {index}
+		&lt;/a&gt;
+	  )
+	)}
+	/* Posts Carousel */
+	&lt;Slider&gt;
+	{posts.map(
+	  (post, index) =&gt; (
+		&lt;Slide className={index == page ? 'active' : 'hidden'}&gt;
+		  &lt;PostTemplate post={post} /&gt;
+		&lt;/Slide&gt;
+	  )
+	)}
+	&lt;/Slider&gt;
   &lt;/div&gt;
 );
 </code></pre>
@@ -108,24 +108,24 @@ A place to publish insights, snippets and research.</p>
 
 <pre><code class="language-javascript">const OnPostsFromStateRefresh = recompose.compose(
   recompose.mapPropsStream(
-    () =&gt; stateStream.distinctUntilChanged(
-      /* wait until (posts or page) change
-         ignore rest of the states updates */
-      (state) =&gt; [
-          state.get('posts'), state.get('page')
-      ]
-    )
+	() =&gt; stateStream.distinctUntilChanged(
+	  /* wait until (posts or page) change
+		 ignore rest of the states updates */
+	  (state) =&gt; [
+		  state.get('posts'), state.get('page')
+	  ]
+	)
   ),
   /* extract what we need to render the
-     PostsTemplate */
+	 PostsTemplate */
   recompose.mapProps(
-    (state) =&gt; ({
-      posts: state.get('posts'),
-      page: state.get('page'),
-      /* here we take a cursor
-         and pass its set function */
-      setPage: state.select('page').set
-    })
+	(state) =&gt; ({
+	  posts: state.get('posts'),
+	  page: state.get('page'),
+	  /* here we take a cursor
+		 and pass its set function */
+	  setPage: state.select('page').set
+	})
   )
 );
 </code></pre>
@@ -144,8 +144,8 @@ import recompose from 'recompose';
 
 // the initial State
 let state = new BaoBab({
-    posts: [],
-    page: 0
+	posts: [],
+	page: 0
 });
 
 // couple the BaoBab event based updateCallback
@@ -215,8 +215,8 @@ And I press Return
 Then a &quot;post&quot; to &quot;/api/todos&quot; should have happened with:
 &quot;&quot;&quot;
   {
-    &quot;title&quot;: &quot;My fancy new Todo&quot;,
-    &quot;completed&quot;: false
+	&quot;title&quot;: &quot;My fancy new Todo&quot;,
+	&quot;completed&quot;: false
   }
 &quot;&quot;&quot;
 
@@ -225,9 +225,9 @@ Then a &quot;post&quot; to &quot;/api/todos&quot; should have happened with:
 Given the API responds to the &quot;post&quot; on &quot;/api/todos&quot; with &quot;201&quot;:
 &quot;&quot;&quot;
   {
-    &quot;id&quot;: 5701886678138880,
-    &quot;title&quot;: &quot;My fancy new Todo&quot;,
-    &quot;completed&quot;: false
+	&quot;id&quot;: 5701886678138880,
+	&quot;title&quot;: &quot;My fancy new Todo&quot;,
+	&quot;completed&quot;: false
   }
 &quot;&quot;&quot;
 
@@ -236,7 +236,6 @@ Given the API responds to the &quot;post&quot; on &quot;/api/todos&quot; with &q
 # testing the ui.
 Then an active Todo &quot;My fancy new Todo&quot; should be visible
 </code></pre>
-
   </section>
 </section>
 
