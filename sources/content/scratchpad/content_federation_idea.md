@@ -8,6 +8,8 @@ draft = false
 
 An old dream of mine is to be part of a social internet and to have a protocol or an infastructure that lets me keep contact with the many parties of the internet that I'm interested in.
 
+<!--more-->
+
 I've come to imagine these parties, which could be persons like friends and colleagues, groups of people or other bodies like companies or institution, newspapers or devices in the internet of things as mere identities that are represented by nothing more than a public key, which may or may not hold additional metadate like a name or a namespace to indicate its role.
 
 The social net I envision is one in which these entities exist indepentent of the underlying infastructure (e.g. servers) and where content can be fed in or retrieved from different locations.

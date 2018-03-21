@@ -2,13 +2,13 @@
   <div class="column column-offset-10 column-70">
     <section class="header">
       <h2>
-        <a href={{"/" | absURL}}>{{ .Site.Title}}</a>
+	<a href={{"/" | absURL}}>{{ .Site.Title}}</a>
       </h2>
     </section>
     <div class="page-subtitle" >
-    {{ range first 1 (where (where .Site.Pages "Section" "page") "Title" "intro") }}
+      {{ range first 1 (where (where .Site.Pages "Section" "page") "Title" "intro") }}
       {{ .Content }}
-    {{ end }}
+      {{ end }}
     </div>
   </div>
 
