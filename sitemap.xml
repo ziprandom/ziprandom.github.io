@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/encrypted_homeservers/</loc>
+    <lastmod>2019-01-05T11:00:00-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/scratchpad/content_federation_idea/</loc>
     <lastmod>2018-03-20T19:00:00-03:00</lastmod>
   </url>
@@ -34,13 +39,25 @@
   </url>
   
   <url>
+    <loc>/tags/arm/</loc>
+    <lastmod>2019-01-05T11:00:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/blog/</loc>
-    <lastmod>2016-09-23T16:00:00-03:00</lastmod>
+    <lastmod>2019-01-05T11:00:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/debian/</loc>
+    <lastmod>2019-01-05T11:00:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -87,6 +104,12 @@
   </url>
   
   <url>
+    <loc>/tags/security/</loc>
+    <lastmod>2019-01-05T11:00:00-03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
     <lastmod>2016-04-28T16:00:00-03:00</lastmod>
     <priority>0</priority>
@@ -94,7 +117,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-03-20T19:00:00-03:00</lastmod>
+    <lastmod>2019-01-05T11:00:00-03:00</lastmod>
     <priority>0</priority>
   </url>
   

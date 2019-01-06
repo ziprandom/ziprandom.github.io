@@ -21,6 +21,24 @@
     </item>
     
     <item>
+      <title>Arm</title>
+      <link>/tags/arm/</link>
+      <pubDate>Sat, 05 Jan 2019 11:00:00 -0300</pubDate>
+      
+      <guid>/tags/arm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debian</title>
+      <link>/tags/debian/</link>
+      <pubDate>Sat, 05 Jan 2019 11:00:00 -0300</pubDate>
+      
+      <guid>/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Emacs</title>
       <link>/tags/emacs/</link>
       <pubDate>Thu, 28 Apr 2016 16:00:00 -0300</pubDate>
@@ -62,6 +80,15 @@
       <pubDate>Fri, 23 Sep 2016 16:00:00 -0300</pubDate>
       
       <guid>/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>/tags/security/</link>
+      <pubDate>Sat, 05 Jan 2019 11:00:00 -0300</pubDate>
+      
+      <guid>/tags/security/</guid>
       <description></description>
     </item>
     

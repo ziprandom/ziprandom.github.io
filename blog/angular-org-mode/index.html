@@ -68,8 +68,6 @@ A place to publish insights, <a href="/scratchpad">snippets</a> and research.</p
 and it´s impressive tangle functionality. You can load this page´s org
 source code in Emacs and start playing around with angular.</p>
 
-<p></p>
-
 <p>After opening the File in an emacs Buffer the elisp source block in the
 post-processing section has to be evaluated ( C-x C-e after the last
 parenthesis ) for coffee to be set up correctly.</p>
@@ -114,7 +112,7 @@ your cursor placed inside the code-block.</p>
 <p>This must be evaluated before the first tangle export in order to setup
 automatic coffe-script compilation.</p>
 
-<pre><code class="language-commonlisp">  (add-hook 'org-babel-post-tangle-hook
+<pre><code class="language-.commonlisp">  (add-hook 'org-babel-post-tangle-hook
 			(
 			 lambda ()
 					(setq coffee-command &quot;/usr/bin/coffee&quot;)
@@ -139,7 +137,7 @@ clicking. {{ &hellip; }} Expressions are also used to directly map variables
 to attributes (id for example). Input fields can be bound to variables
 via the <strong>ng-model</strong> directive.</p>
 
-<pre><code class="language-commonlisp">  &lt;!doctype html&gt;
+<pre><code class="language-.commonlisp">  &lt;!doctype html&gt;
   &lt;html ng-app=&quot;app&quot;&gt;
 	&lt;head&gt;
 	  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
@@ -187,7 +185,7 @@ object. We may update these bindings via \$scope.apply () -&gt;
 remember when exactly it is. Here we also define an array of objects to
 iterate over it via the ng-repeat directive in the view.</p>
 
-<pre><code class="language-coffee">  # (setq coffee-command &quot;coffee -j project.js&quot;)
+<pre><code class="language-.coffee">  # (setq coffee-command &quot;coffee -j project.js&quot;)
   angular.module('app', ['ngSanitize'])
   ## Controllers
   @MainCtrl = ($scope, $http) -&gt;
@@ -220,7 +218,7 @@ iterate over it via the ng-repeat directive in the view.</p>
 
 <h4 id="4-4-style-css">4.4 Style.css</h4>
 
-<pre><code class="language-css">  .bold {
+<pre><code class="language-.css">  .bold {
 	  font-weight: bold;
   }
   a {

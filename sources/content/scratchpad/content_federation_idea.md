@@ -32,7 +32,7 @@ A box would be a namespace available on the internet to which content can be pus
 
 While entities exist only as a signer of a message or as a public key in someones address book a box has a address in the physical network and enables discovery and content delivery in the network. The routing logic stays undefined and is subject to contracts that can be defined ontop of the basic semantic described here.
 
-# just another Internet on top of the internet?
+# just another internet on top of the internet?
 
 With the concept of identities, boxes and the admittedly still nebular system to enable the definition and negociation of content routing/storage/computation/... logic many network communication primitives like messaging, content servers, publish-subscribe or chat could be realised. Identies can exist independently of the changing underlying network infastructure and still use boxes, which can be provided as services to reach availablitity and discoverability.
 
