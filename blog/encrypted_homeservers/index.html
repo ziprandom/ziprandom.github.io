@@ -269,9 +269,9 @@ KEYFILE_PATTERN=&quot;/boot/keyfile&quot;
 
 <p><strong>Raspbian: adjust <code>/boot/cmdline.txt</code></strong></p>
 
-<p>after we change <code>root=</code> to our new encrypted root partition the boot loader is setup:</p>
+<p>change <code>root=</code> to our new encrypted root partition:</p>
 
-<pre><code class="language-sh">root=/dev/mapper/
+<pre><code class="language-sh">root=/dev/mapper/cryptrootvg-root_lv
 </code></pre>
 
 <p><strong>Armbian: adjust <code>/boot/boot.cmd</code> and rebuild uboat:</strong></p>
