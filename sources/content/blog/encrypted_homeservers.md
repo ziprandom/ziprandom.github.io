@@ -236,10 +236,10 @@ update-initramfs -k all -u
 
 **Raspbian: adjust `/boot/cmdline.txt`**
 
-after we change `root=` to our new encrypted root partition the boot loader is setup:
+change `root=` to our new encrypted root partition:
 
 ```sh
-root=/dev/mapper/
+root=/dev/mapper/cryptrootvg-root_lv
 ```
 
 **Armbian: adjust `/boot/boot.cmd` and rebuild uboat:**
