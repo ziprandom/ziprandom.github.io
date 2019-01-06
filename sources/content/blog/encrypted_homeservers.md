@@ -102,6 +102,8 @@ now it's time to log into the system via ssh:
 ```sh
 # raspbian uses user 'pi' password 'raspberry'
 ssh pi@192.168.137.68
+# become root
+sudo -s
 
 # armbian uses user 'root' password '1234'
 ssh root@192.168.137.68
@@ -114,9 +116,9 @@ ssh root@192.168.137.68
 In order to prepare the encrypted storage we need to install some tools on the system:
 
 ```sh
-sudo aptitude update
-sudo aptitude safe-upgrade
-sudo aptitude install busybox cryptsetup lvm2
+aptitude update
+aptitude safe-upgrade
+aptitude install busybox cryptsetup lvm2
 ```
 
 
@@ -124,24 +126,24 @@ Now attach the usb storage that you want to use as the encrypted root to the boa
 
 ```sh
 # create a keyfile
-sudo dd if=/dev/urandom of=/boot/keyfile bs=1024 count=4
+dd if=/dev/urandom of=/boot/keyfile bs=1024 count=4
 # create encrypted device
-sudo cryptsetup -c aes-xts-plain -s 512 --key-file /boot/keyfile -y luksFormat /dev/sda
+cryptsetup -c aes-xts-plain -s 512 --key-file /boot/keyfile -y luksFormat /dev/sda
 # open encrypted device
-sudo cryptsetup luksOpen --key-file /boot/keyfile /dev/sda cryptroot
+cryptsetup luksOpen --key-file /boot/keyfile /dev/sda cryptroot
 ```
 
 now proceed to create the lvm volume group and the volumes. for the swap partition allocate as much memory as you have ram on your board
 
 ```sh
-sudo pvcreate /dev/mapper/cryptroot
-sudo vgcreate cryptrootvg /dev/mapper/cryptroot
-sudo lvcreate -L 5G -n root_lv cryptrootvg
-sudo lvcreate -L 512MB -n swap_lv cryptrootvg
-sudo lvcreate -l 100%FREE -n home_lv cryptrootvg
-sudo mkfs.ext4 /dev/mapper/cryptrootvg-root_lv
-sudo mkfs.ext4 /dev/mapper/cryptrootvg-home_lv
-sudo mkswap -f /dev/mapper/cryptrootvg-swap_lv
+pvcreate /dev/mapper/cryptroot
+vgcreate cryptrootvg /dev/mapper/cryptroot
+lvcreate -L 5G -n root_lv cryptrootvg
+lvcreate -L 512MB -n swap_lv cryptrootvg
+lvcreate -l 100%FREE -n home_lv cryptrootvg
+mkfs.ext4 /dev/mapper/cryptrootvg-root_lv
+mkfs.ext4 /dev/mapper/cryptrootvg-home_lv
+mkswap -f /dev/mapper/cryptrootvg-swap_lv
 ```
 
 before we copy the contents of our root partition to the encrypted root we setup the system to use the encrypted drive on the next boot. this way we make sure the changed configuration files will be present on the encrypted root partition as well.
@@ -151,7 +153,7 @@ before we copy the contents of our root partition to the encrypted root we setup
 
 **/etc/fstab**
 
-edit the `/etc/fstab` file on the board. comment out the line for the root partition and add the new entries for the encrypted partitions using an editor like `sudo vi /etc/fstab` or `sudo nano /etc/fstab`
+edit the `/etc/fstab` file on the board. comment out the line for the root partition and add the new entries for the encrypted partitions using an editor like `vi /etc/fstab` or `nano /etc/fstab`
 
 find the line for the `/` mount point
 ```sh
@@ -211,13 +213,13 @@ INITRD=Yes
 and run:
 
 ```sh
-sudo update-initramfs -c -k `uname -r`
+update-initramfs -c -k `uname -r`
 ```
 
 to create your initramfs. now we need to tell the bootloader to use that image by adding a line to `/boot/config.txt`:
 
 ```sh
-echo "initramfs $(cd /boot; find init* | tail -n1 )" | sudo tee -a /boot/config.txt
+echo "initramfs $(cd /boot; find init* | tail -n1 )" | tee -a /boot/config.txt
 ```
 
 there is a comment on how to automate this to run everytime the initramfs gets updated [here](https://raspberrypi.stackexchange.com/questions/92557/how-can-i-use-an-init-ramdisk-initramfs-on-boot-up-raspberry-pi)
@@ -226,7 +228,7 @@ there is a comment on how to automate this to run everytime the initramfs gets u
 if your using armbian then simply run:
 
 ```sh
-sudo update-initramfs -k all -u
+update-initramfs -k all -u
 ```
 
 **Raspbian: adjust `/boot/cmdline.txt`**
@@ -258,7 +260,7 @@ mkimage -C none -A arm -T script -d /boot/boot.cmd /boot/bootspbian extra: enabl
 **Raspbian: start ssh server on boot**
 
 ```sh
-sudo systemctl enable ssh.socket
+systemctl enable ssh.socket
 ```
 
 5\. populate the encrypted partitions and reboot
@@ -267,28 +269,28 @@ sudo systemctl enable ssh.socket
 now that we set up the system to use the encrypted partitions we need to copy the unencrypted root partition over. first we mount `/dev/mapper/cryptrootvg-rootlv` and `/dev/mapper/cryptrootvg-homelv` under `/mnt`
 
 ```sh
-sudo mount /dev/mapper/cryptrootvg-root_lv /mnt
-sudo mkdir /mnt/home
-sudo mount /dev/mapper/cryptrootvg-home_lv /mnt/home
+mount /dev/mapper/cryptrootvg-root_lv /mnt
+mkdir /mnt/home
+mount /dev/mapper/cryptrootvg-home_lv /mnt/home
 ```
 
 now we sync the files using rsync:
 
 ```sh
-sudo rsync -avrltD --delete --exclude boot/* --exclude dev/* --exclude proc/* --exclude sys/* --exclude media/* --exclude mnt/* --exclude run/* --exclude tmp/* / /mnt
+rsync -avrltD --delete --exclude boot/* --exclude dev/* --exclude proc/* --exclude sys/* --exclude media/* --exclude mnt/* --exclude run/* --exclude tmp/* / /mnt
 ```
 
 finally we unmount the encrypted partitions:
 
 ```sh
-sudo umount /mnt/home
-sudo umount /mnt
+umount /mnt/home
+umount /mnt
 ```
 
 and reboot:
 
 ```sh
-sudo reboot
+reboot
 ```
 
 If all went well the board reboots and we can log in via ssh again. we can check that the encrypted partitions are used with:
