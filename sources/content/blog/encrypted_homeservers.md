@@ -203,6 +203,8 @@ KEYFILE_PATTERN="/boot/keyfile"
 
 now that the necessary configurations have been set up it's time to rebuild the initramfs on the `/boot` partition:
 
+**Raspbian: initially build initramfs, adjust config.txt**
+
 if you used the raspbian image for raspberry pi then your system is configured to not build and use an initramfs. in this case make sure the file `/etc/default/raspberrypi-kernel` includes the following line:
 
 ```sh
@@ -224,6 +226,7 @@ echo "initramfs $(cd /boot; find init* | tail -n1 )" | tee -a /boot/config.txt
 
 there is a comment on how to automate this to run everytime the initramfs gets updated [here](https://raspberrypi.stackexchange.com/questions/92557/how-can-i-use-an-init-ramdisk-initramfs-on-boot-up-raspberry-pi)
 
+**Armbian: update initramfs**
 
 if your using armbian then simply run:
 
@@ -254,7 +257,7 @@ setenv rootdev "/dev/mapper/cryptrootvg-root_lv"
 and recompile with:
 
 ```
-mkimage -C none -A arm -T script -d /boot/boot.cmd /boot/bootspbian extra: enable sshd**
+mkimage -C none -A arm -T script -d /boot/boot.cmd /boot/boot.scr
 ```
 
 **Raspbian: start ssh server on boot**
