@@ -68,6 +68,10 @@ A place to publish insights, <a href="/scratchpad">snippets</a> and research.</p
 
 <p><strong>tl;dr</strong> <em>using debian based prebuild os images as a basis to setup single board computers with full disk encryption. luks encrypted root resides on a usb drive while unencrypted  partes (initramfs, kernel and encryption key) are stored on an sd card that functions like a physical key to unlock the disk on startup and get removed for secure storage afterwards.</em></p>
 
+<h1 id="warning">Warning:</h1>
+
+<p>As of <code>armbian 5.69</code> due to <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=917607 ??">this bug</a> <code>udev</code> isn&rsquo;t able to recognize usb devices like <code>/dev/sda</code> anymore. The last confirmed version is <code>armbian 5.75</code>. The problem seems to be already fixed in debian so the next release of armbian will hopefully fix this issue. I have no knowledge of whether <code>raspbian</code> is affected as well but it&rsquo;s vers likely. the version I installed in this tutorial is <code>Linux raspberrypi 4.14.79+ #1159 Sun Nov 4 17:28:08 GMT 2018 armv6l</code>.</p>
+
 <h1 id="motivation">Motivation</h1>
 
 <p>Many tutorials on linux (full) disk encryption assume an unencrypted boot partition on the same drive as the encrypted root. In the home server scenario this cannot be considered secure as an intruder can freely temper with the crucial initramfs and kernel to make them steal the key material (possibly a keyfile and/or password) on the next reboot. To adequately protect data on a raspberry (or other board) based system that cannot be as physically secured as a server in a server room we need to make sure to leave nothing behind than encrypted partition. This can be achieved by separating the <code>/boot</code> partition from the encryptied <code>/root</code> partition and removing the device that holds the <code>/boot</code> partition after the system has booted.</p>
@@ -220,7 +224,7 @@ mkswap -f /dev/mapper/cryptrootvg-swap_lv
 
 <p>now find the uuid that corresponds to your usb drive. if your usb device was named <code>sda</code> run:</p>
 
-<pre><code class="language-sh">ls -la /dev/disk/by-uuid/ | sda
+<pre><code class="language-sh">ls -la /dev/disk/by-uuid/ | grep sda
 lrwxrwxrwx 1 root root   9 Jan  5 23:20 cc0d9912-ec41-427b-89f7-7e7032ce1e79 -&gt; ../../sda
 </code></pre>
 
@@ -325,7 +329,31 @@ umount /mnt
 <pre><code class="language-sh">mount
 </code></pre>
 
-<p>now we can remove the sd card and hide it somewhere safe. the data on the plug is now a lot safer.</p>
+<p>now we can remove the sd card and hide it somewhere safe.</p>
+
+<h2 id="6-extra-securely-backup-erase-restore-data-on-sd-card">6. Extra: securely backup &amp; erase / restore data on sd card</h2>
+
+<p>alternatively we can make a secure backup of the sd cards <code>/boot</code> folder and erase it to prevent a person stealing it from having access to the data. keep in mind that this only backups the <code>/boot</code> folder on the sd cards first partition and not the sectors prepended to the partition, which are necessary for the board to be able to boot from the card. therefore you still keep the sd card.</p>
+
+<pre><code class="language-sh">mount /dev/mmcblk0p1 /mnt
+cd /mnt
+tar -czO boot | gpg -e -r &lt;your-keys-associated-email-address&gt; &gt; raspberry-raspbian.tar.gz.gpg
+# shred overwrites several times
+shred -u -z /mnt/boot/keyfile
+shred -u -z /mnt/boot/initrd.img*
+# the rest of the ssd cards
+# content is not needed anymore
+rm -rf /mnt/*
+</code></pre>
+
+<p>In case we need to (re)boot the device we need to first write back these files to the sd card:</p>
+
+<pre><code class="language-sh">mount /dev/mmcblk0 /mnt
+cd /mnt
+gpg -d /path/to/my/raspberry-raspbian.tar.gz.gpg | tar -xz
+</code></pre>
+
+<p>the data on the device is now a lot safer.</p>
   </section>
 </section>
 
