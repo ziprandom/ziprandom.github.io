@@ -13,6 +13,11 @@ Set up arm boards supported by armbian / raspbian with fully encrypted root / ho
 
 **tl;dr** *using debian based prebuild os images as a basis to setup single board computers with full disk encryption. luks encrypted root resides on a usb drive while unencrypted  partes (initramfs, kernel and encryption key) are stored on an sd card that functions like a physical key to unlock the disk on startup and get removed for secure storage afterwards.*
 
+Warning:
+========
+
+As of `armbian 5.69` due to [this bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=917607 ??) `udev` isn't able to recognize usb devices like `/dev/sda` anymore. The last confirmed version is `armbian 5.75`. The problem seems to be already fixed in debian so the next release of armbian will hopefully fix this issue. I have no knowledge of whether `raspbian` is affected as well but it's vers likely. the version I installed in this tutorial is `Linux raspberrypi 4.14.79+ #1159 Sun Nov 4 17:28:08 GMT 2018 armv6l`.
+
 Motivation
 ==========
 
@@ -35,7 +40,6 @@ Requirements
   - an sd slot _compatible to the sd card you intend to use_
   - a disk flashing software. _this comes preinstalled on Linux/OSX on windows refer to [this](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md) page for image flashing_
   - an ssh client _also preinstalled on Linux/OSX for windows see [here](https://www.putty.org/)_
-
 
 Big Picture
 ===========
@@ -181,7 +185,7 @@ now add the new lines for the encrypted partitions:
 now find the uuid that corresponds to your usb drive. if your usb device was named `sda` run:
 
 ```sh
-ls -la /dev/disk/by-uuid/ | sda
+ls -la /dev/disk/by-uuid/ | grep sda
 lrwxrwxrwx 1 root root   9 Jan  5 23:20 cc0d9912-ec41-427b-89f7-7e7032ce1e79 -> ../../sda
 ```
 
@@ -302,4 +306,31 @@ If all went well the board reboots and we can log in via ssh again. we can check
 mount
 ```
 
-now we can remove the sd card and hide it somewhere safe. the data on the plug is now a lot safer.
+now we can remove the sd card and hide it somewhere safe.
+
+6\. Extra: securely backup & erase / restore data on sd card
+------------------------------------------------------------
+
+alternatively we can make a secure backup of the sd cards `/boot` folder and erase it to prevent a person stealing it from having access to the data. keep in mind that this only backups the `/boot` folder on the sd cards first partition and not the sectors prepended to the partition, which are necessary for the board to be able to boot from the card. therefore you still keep the sd card.
+
+```sh
+mount /dev/mmcblk0p1 /mnt
+cd /mnt
+tar -czO boot | gpg -e -r <your-keys-associated-email-address> > raspberry-raspbian.tar.gz.gpg
+# shred overwrites several times
+shred -u -z /mnt/boot/keyfile
+shred -u -z /mnt/boot/initrd.img*
+# the rest of the ssd cards
+# content is not needed anymore
+rm -rf /mnt/*
+```
+
+In case we need to (re)boot the device we need to first write back these files to the sd card:
+
+```sh
+mount /dev/mmcblk0 /mnt
+cd /mnt
+gpg -d /path/to/my/raspberry-raspbian.tar.gz.gpg | tar -xz
+```
+
+the data on the device is now a lot safer.
